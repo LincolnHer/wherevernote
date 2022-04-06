@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Tag.associate = function(models) {
     // associations can be defined here
-    // Tag.hasMany(models.Note, { foreignKey: 'noteId' })
+    Tag.belongsTo(models.Note, { foreignKey: 'noteId' })
     Tag.belongsTo(models.User, { foreignKey: 'userId' })
   };
   return Tag;
