@@ -6,10 +6,13 @@
 const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
+const notebooksRouter = require('./notebook.js');
 
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
+
+router.use('/notebooks', notebooksRouter)
 
 // POST /api/test
 // router.post('/test', function(req, res) {
