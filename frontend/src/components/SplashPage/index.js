@@ -7,10 +7,10 @@ function SplashPage() {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user);
 
+  if (sessionUser) return null
 
   return (
     <>
-    <h1>Hello from SplashPage</h1>
     <div className="body">
       <div className="content">
         <div className="value">
