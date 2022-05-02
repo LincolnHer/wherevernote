@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import Sidebar from "../SidebarPage";
+import Notebook from "../NotebookPage";
 import './HomePage.css'
 
 function HomePage() {
@@ -14,7 +15,14 @@ function HomePage() {
   return (
     <>
       <h1>Hello From Home Page</h1>
-      <Sidebar />
+      <div className="home-page-content">
+        <div className="sidebar">
+        <Sidebar />
+        </div>
+        <div className="Notebook-container">
+        <Notebook />
+        </div>
+      </div>
     </>
   )
 }
