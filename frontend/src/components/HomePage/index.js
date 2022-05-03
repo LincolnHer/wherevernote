@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from "react-router-dom";
+import { getNotebooks } from "../../store/notebook";
 import Sidebar from "../SidebarPage";
-import Notebook from "../NotebookPage";
 import './HomePage.css'
 
 function HomePage() {
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const notebooksObj = useSelector(state => state.notebooks)
+  console.log('notebook normalized state', notebooksObj)
+
+  const notebooks = Object.values(notebooksObj)
+  console.log('notebook arr', notebooks)
+
+  useEffect(() => {
+    dispatch(getNotebooks(sessionUser.id))
+  }, [dispatch]);
 
   if (!sessionUser) {
    return <Redirect to="/" />
