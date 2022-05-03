@@ -8,6 +8,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import HomePage from "./components/HomePage";
+import Notebook from "./components/NotebookPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,12 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path='/notebook/:notebookId'>
+            <Notebook />
+          </Route>
+          <Route>
+            <p>Page Not Found</p>
           </Route>
         </Switch>
       )}

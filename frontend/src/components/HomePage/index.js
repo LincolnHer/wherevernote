@@ -19,9 +19,6 @@ function HomePage() {
         <div className="sidebar">
         <Sidebar />
         </div>
-        <div className="Notebook-container">
-        <Notebook />
-        </div>
       </div>
     </>
   )
