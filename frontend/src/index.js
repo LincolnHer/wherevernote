@@ -7,7 +7,7 @@ import App from './App';
 import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session'
-import { getNotebooks } from './store/notebook';
+import { getNotebooks, getSingleNotebook } from './store/notebook';
 import ModalProvider from './context/ModalContext';
 
 
@@ -20,6 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.store = store;
   window.sessionActions = sessionActions;
   window.getNotebooks = getNotebooks;
+  window.getSingleNotebook = getSingleNotebook;
 }
 
 function Root() {
