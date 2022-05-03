@@ -9,10 +9,7 @@ function HomePage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const notebooksObj = useSelector(state => state.notebooks)
-  console.log('notebook normalized state', notebooksObj)
-
-  const notebooks = Object.values(notebooksObj)
-  console.log('notebook arr', notebooks)
+  // console.log('notebook normalized state', notebooksObj)
 
   useEffect(() => {
     dispatch(getNotebooks(sessionUser.id))
@@ -27,7 +24,7 @@ function HomePage() {
       <h1>Hello From Home Page</h1>
       <div className="home-page-content">
         <div className="sidebar">
-        <Sidebar />
+        <Sidebar notebooks={notebooksObj}/>
         </div>
       </div>
     </>

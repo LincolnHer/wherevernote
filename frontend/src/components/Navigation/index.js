@@ -21,14 +21,13 @@ function Navigation({ isLoaded }){
 
     sessionLinks = (
       <>
-      <NavLink to='/home'>home</NavLink>
       <ProfileButton user={sessionUser} />
       </>
     );
   } else {
     sessionLinks = (
       <>
-        <NavLink exact to="/">Evernote</NavLink>
+        <NavLink exact to="/">Wherevernote</NavLink>
         <NavLink to="/login">Log In</NavLink>
         <NavLink to="/signup">Sign Up</NavLink>
         <button onClick={demoUser}>Demo User</button>

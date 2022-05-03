@@ -33,13 +33,13 @@ function ProfileButton({ user }) {
     <>
       <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
+        {user.username}
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
-            <button onClick={logout}>Log Out</button>
+            <button onClick={logout}>Sign out {user.username}</button>
           </li>
         </ul>
       )}
