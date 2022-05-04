@@ -1,6 +1,5 @@
 import { csrfFetch } from './csrf';
 
-// GET all notebooks that is owned by the user
 const GET_NOTEBOOKS = 'notebooks/GET_NOTEBOOKS'
 const GET_NOTEBOOK = 'notebooks/GET_NOTEBOOK'
 
@@ -18,6 +17,7 @@ const getNotebook = (notebookId) => {
   }
 }
 
+// GET all notebooks owned by user
 export const getNotebooks = (userId) => async dispatch => {
   const res = await fetch(`/api/notebooks/${userId}`);
 

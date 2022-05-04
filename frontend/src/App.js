@@ -34,7 +34,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path='/notebook/:notebookId'>
+          <Route path='/notebooks/:notebookId'>
             <Notebook />
           </Route>
           <Route>

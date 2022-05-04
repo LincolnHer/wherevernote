@@ -16,15 +16,15 @@ function HomePage() {
   }, [dispatch]);
 
   if (!sessionUser) {
-   return <Redirect to="/" />
-  }
+    return <Redirect to="/" />
+   }
 
   return (
     <>
       <h1>Hello From Home Page</h1>
       <div className="home-page-content">
         <div className="sidebar">
-        <Sidebar notebooks={notebooksObj}/>
+          <Sidebar notebooks={notebooksObj}/>
         </div>
       </div>
     </>
