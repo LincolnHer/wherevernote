@@ -2,6 +2,7 @@ import { csrfFetch } from './csrf';
 
 const GET_NOTEBOOKS = 'notebooks/GET_NOTEBOOKS'
 const GET_NOTEBOOK = 'notebooks/GET_NOTEBOOK'
+const POST_NOTEBOOK = 'notebooks/POST_NOTEBOOK'
 
 const getUserNotebooks = (notebooks) => {
   return {
@@ -14,6 +15,13 @@ const getNotebook = (notebookId) => {
   return {
     type: GET_NOTEBOOK,
     payload: notebookId
+  }
+}
+
+const postNotebook = (notebook) => {
+  return {
+    type: POST_NOTEBOOK,
+    payload: notebook
   }
 }
 
@@ -37,6 +45,20 @@ export const getSingleNotebook = (notebookId) => async dispatch => {
   }
 }
 
+// POST create a notebook
+export const createNotebook = (notebook) => async dispatch => {
+  const res = await csrfFetch('/api/notebooks', {
+    method: 'POST',
+    header: {'Content-Type': 'application/json'},
+    body: JSON.stringify(notebook)
+  })
+
+  if (res.ok) {
+    const newNotebook = res.json();
+    dispatch(postNotebook(newNotebook));
+  }
+}
+
 const initialState = {};
 
 export default function notebooksReducer (state = initialState, action) {
@@ -50,7 +72,10 @@ export default function notebooksReducer (state = initialState, action) {
       });
       return newState;
     case GET_NOTEBOOK:
-      newState = {...state, notebook: action.payload}
+      newState = { ...state, notebook: action.payload }
+      return newState;
+    case POST_NOTEBOOK:
+      newState = { ...state, [action.payload.id]: action.payload }
       return newState;
     default:
       return state;
