@@ -49,12 +49,12 @@ export const getSingleNotebook = (notebookId) => async dispatch => {
 export const createNotebook = (notebook) => async dispatch => {
   const res = await csrfFetch('/api/notebooks', {
     method: 'POST',
-    header: {'Content-Type': 'application/json'},
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(notebook)
   })
 
   if (res.ok) {
-    const newNotebook = res.json();
+    const newNotebook = await res.json();
     dispatch(postNotebook(newNotebook));
   }
 }

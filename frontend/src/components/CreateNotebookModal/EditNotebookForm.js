@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from "../../context/ModalContext"
-import { createNotebook } from '../../store/notebook'
 
-
-function CreateNotebookModal() {
+function EditNotebookModal() {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector(state => state.session.user);
@@ -20,8 +18,6 @@ function CreateNotebookModal() {
       userId: sessionUser.id
     }
 
-    const notebook = await dispatch(createNotebook(formValues));
-
   };
 
   useEffect(() => {
@@ -34,8 +30,7 @@ function CreateNotebookModal() {
   return (
   <div className="notebook-modal">
     <header>
-      <h1>Create new notebook</h1>
-      <h2>Notebooks are useful to help you keep track of information of similar topics.</h2>
+      <h1>Edit notebook</h1>
     </header>
     <form
       className='create-notebook-form'
@@ -56,11 +51,11 @@ function CreateNotebookModal() {
           placeholder='Notebook name'
         />
       </label>
-      <button type='button' onClick={setModalIsOpenToFalse} >Cancel</button>
-      <button type='submit'>Create</button>
+      <button type='submit'>Edit</button>
+      <button>Delete</button>
     </form>
   </div>
   )
 }
 
-export default CreateNotebookModal
+export default EditNotebookModal
