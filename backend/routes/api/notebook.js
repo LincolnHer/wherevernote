@@ -80,4 +80,13 @@ router.delete('/notebook/:notebookId', asyncHandler(async(req, res) => {
   return res.json(notebooks)
 }));
 
+//GET a single notebook
+router.get('/notebook/:notebookId', asyncHandler(async(req, res) => {
+  const notebookId = req.params.notebookId
+
+  const notebook = await Notebook.findByPk(notebookId)
+
+  return res.json(notebook)
+}))
+
 module.exports = router

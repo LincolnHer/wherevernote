@@ -1,0 +1,23 @@
+.home-page-content {
+    display: flex;
+    /* background-color: aquamarine; */
+}
+
+.sidebar {
+ padding: 15px;
+ background-color: black;
+ color: white;
+ max-width: fit-content;
+}
+
+li.nav-links:hover {
+  background-color: grey;
+}
+
+li.nav-links.new{
+  color: #00A82D;
+}
+
+.Notebook-container {
+ padding: 15px;
+}

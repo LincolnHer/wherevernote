@@ -7,6 +7,8 @@ import App from './App';
 import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session'
+import { getNotebooks, getSingleNotebook } from './store/notebook';
+import ModalProvider from './context/ModalContext';
 
 
 const store = configureStore();
@@ -17,14 +19,18 @@ if (process.env.NODE_ENV !== 'production') {
   window.csrfFetch = csrfFetch;
   window.store = store;
   window.sessionActions = sessionActions;
+  window.getNotebooks = getNotebooks;
+  window.getSingleNotebook = getSingleNotebook;
 }
 
 function Root() {
   return (
     <ReduxProvider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ModalProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ModalProvider>
     </ReduxProvider>
   );
 }
