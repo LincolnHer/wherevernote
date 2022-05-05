@@ -13,7 +13,7 @@ function Notebook() {
   const notebooksArr = Object.values(notebookObj);
   // console.log('notebook state', notebooksArr)
   const singleNotebook = useSelector(state => state.notebooks[notebookId])
-  console.log(singleNotebook)
+  // console.log(singleNotebook)
   const uniqueNotebooks = [...new Map(notebooksArr.map(notebook => [JSON.stringify(notebook), notebook])).values()];
   // console.log('no duplicates', uniqueNotebooks)
 
