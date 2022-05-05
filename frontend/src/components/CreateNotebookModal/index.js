@@ -27,7 +27,7 @@ function CreateNotebookModal() {
   useEffect(() => {
     const validationErrors = [];
     if (!title.length) validationErrors.push('Your notebook name must contain at least one character');
-    if (title.length > 50) validationErrors.push("Your notebook name cannott be longer than 50 characters");
+    if (title.length > 50) validationErrors.push("Your notebook name cannot be longer than 50 characters");
     setErrors(validationErrors);
   }, [title]);
 
@@ -38,7 +38,7 @@ function CreateNotebookModal() {
       <h2>Notebooks are useful to help you keep track of information of similar topics.</h2>
     </header>
     <form
-      className='create-notebook-form'
+      className='notebook-form'
       onSubmit={submit}
     >
     <ul className='errors'>

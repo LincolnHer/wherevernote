@@ -6,6 +6,8 @@ export const useModal = () => useContext(ModalContext);
 
 export default function ModalProvider({ children }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalName, setModalName] = useState('create')
+
 
   const setModalIsOpenToTrue =()=>{
       setModalIsOpen(true)
@@ -17,7 +19,7 @@ export default function ModalProvider({ children }) {
 
   return (
   <ModalContext.Provider
-    value={{modalIsOpen, setModalIsOpen, setModalIsOpenToTrue, setModalIsOpenToFalse}}>
+    value={{modalIsOpen, setModalIsOpen, setModalIsOpenToTrue, setModalIsOpenToFalse, modalName, setModalName}}>
     {children}
   </ModalContext.Provider>
   )

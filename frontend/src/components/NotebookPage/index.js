@@ -19,7 +19,7 @@ function Notebook() {
   // console.log(singleNotebook)
   const uniqueNotebooks = [...new Map(notebooksArr.map(notebook => [JSON.stringify(notebook), notebook])).values()];
   // console.log('no duplicates', uniqueNotebooks)
-  const { modalIsOpen, setModalIsOpen, setModalIsOpenToTrue, setModalIsOpenToFalse } = useModal();
+  const { modalIsOpen, setModalIsOpen, setModalIsOpenToTrue, setModalIsOpenToFalse, modalName, setModalName } = useModal();
   const customStyles = {
     content : {
       top: '50%',
@@ -43,7 +43,8 @@ function Notebook() {
       <div className="notes-content">
         <h2>{singleNotebook?.title}</h2>
         <h3
-          onClick={setModalIsOpenToTrue}>
+          onClick={() => {setModalIsOpen(true); setModalName('edit');}}
+          >
           Edit Notebook
         </h3>
         <Modal isOpen={modalIsOpen} style={customStyles}>

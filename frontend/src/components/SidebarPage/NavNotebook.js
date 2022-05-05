@@ -1,13 +1,15 @@
+import { useState } from "react"
 import { NavLink } from "react-router-dom"
 import { useModal } from "../../context/ModalContext"
 import Modal from 'react-modal'
 import CreateNotebookModal from "../CreateNotebookModal"
+import EditNotebookModal from "../CreateNotebookModal/EditNotebookForm";
 
 Modal.setAppElement('#root');
 
 function NavNotebook({ notebooks }) {
   const notebooksArr = Object.values(notebooks)
-  const { modalIsOpen, setModalIsOpen, setModalIsOpenToTrue, setModalIsOpenToFalse } = useModal();
+  const { modalIsOpen, setModalIsOpen, setModalIsOpenToTrue, setModalIsOpenToFalse, modalName, setModalName } = useModal();
   const customStyles = {
     content : {
       top: '50%',
@@ -39,13 +41,13 @@ function NavNotebook({ notebooks }) {
         ))}
         <li
         className="nav-links new"
-        onClick={setModalIsOpenToTrue}
+        onClick={() => {setModalIsOpen(true); setModalName('create');}}
         >
           New Notebook
         </li>
         <Modal isOpen={modalIsOpen} style={customStyles}>
           <button onClick={setModalIsOpenToFalse}>x</button>
-          <CreateNotebookModal />
+          {modalName === 'edit' ? <EditNotebookModal /> : <CreateNotebookModal />}
         </Modal>
       </div>
     </ul>
