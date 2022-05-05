@@ -32,9 +32,9 @@ function Notebook() {
     }
 };
 
-  useEffect(() => {
-    dispatch(getSingleNotebook(notebookId))
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(getSingleNotebook(notebookId))
+  // }, [dispatch])
 
   return (
     <div className="notebook-container">

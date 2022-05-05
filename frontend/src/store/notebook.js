@@ -3,6 +3,8 @@ import { csrfFetch } from './csrf';
 const GET_NOTEBOOKS = 'notebooks/GET_NOTEBOOKS'
 const GET_NOTEBOOK = 'notebooks/GET_NOTEBOOK'
 const POST_NOTEBOOK = 'notebooks/POST_NOTEBOOK'
+const PUT_NOTEBOOK = 'notebooks/PUT_NOTEBOOK'
+const DELETE_NOTEBOOK = 'notebooks/DELETE_NOTEBOOK'
 
 const getUserNotebooks = (notebooks) => {
   return {
@@ -21,6 +23,20 @@ const getNotebook = (notebookId) => {
 const postNotebook = (notebook) => {
   return {
     type: POST_NOTEBOOK,
+    payload: notebook
+  }
+}
+
+const putNotebook = (notebook) => {
+  return {
+    type: PUT_NOTEBOOK,
+    payload: notebook
+  }
+}
+
+const removeNotebook = (notebook) => {
+  return {
+    type: DELETE_NOTEBOOK,
     payload: notebook
   }
 }
@@ -59,6 +75,34 @@ export const createNotebook = (notebook) => async dispatch => {
   }
 }
 
+// PUT edit a notebook
+export const editNotebook = (notebook) => async dispatch => {
+  const res = await csrfFetch(`/api/notebooks/notebook/${notebook.id}`,
+  {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(notebook)
+  })
+
+  if (res.ok) {
+    const editedNotebook = await res.json();
+    dispatch(putNotebook(editedNotebook));
+  }
+};
+
+// DELETE delete a notebook
+export const deleteNotebook = (notebook) => async dispatch => {
+  const res = await csrfFetch(`/api/notebooks/notebook/${notebook.id}`,
+  {
+    method: 'DELETE',
+  });
+
+  if (res.ok) {
+    const oldNotebook = await res.json();
+    dispatch(removeNotebook(notebook));
+  }
+};
+
 const initialState = {};
 
 export default function notebooksReducer (state = initialState, action) {
@@ -77,6 +121,10 @@ export default function notebooksReducer (state = initialState, action) {
     case POST_NOTEBOOK:
       newState = { ...state, [action.payload.id]: action.payload }
       return newState;
+    case DELETE_NOTEBOOK:
+      newState = { ...state };
+      delete newState[action.payload.id]
+      return newState
     default:
       return state;
   }

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { NavLink } from 'react-router-dom'
 import NavNotebook from "./NavNotebook";
+import { useModal } from '../../context/ModalContext'
 
 function Sidebar({ notebooks }) {
   const [showNotebooks, setShowNotebooks] = useState(false)
+  const { setModalIsOpen } = useModal();
 
   // Create notebooks nav input
   return (
@@ -14,7 +16,7 @@ function Sidebar({ notebooks }) {
           <NavLink style={{ color: 'white', textDecoration: 'none' }} to='/home'>home</NavLink>
         </li>
         <li
-        onClick={() => setShowNotebooks(!showNotebooks)}
+        onClick={ () => setShowNotebooks(!showNotebooks) }
         className="nav-links"
         >
           Notebooks

@@ -1,23 +1,23 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory, useParams } from 'react-router-dom';
 import { useModal } from "../../context/ModalContext"
+import { deleteNotebook } from "../../store/notebook"
 
 function EditNotebookModal() {
   const dispatch = useDispatch();
-
+  const history = useHistory();
+  const { notebookId } = useParams();
   const sessionUser = useSelector(state => state.session.user);
+  const notebook = useSelector(state => state.notebooks[notebookId]);
   const [title, setTitle] = useState('')
   const [errors, setErrors] = useState([])
-  const { setModalIsOpenToFalse } = useModal();
+  const { setModalIsOpen, setModalIsOpenToFalse } = useModal();
 
-  const submit = async (e) => {
+  const handleDelete = async (e) => {
     e.preventDefault();
-    setModalIsOpenToFalse();
-    const formValues = {
-      title: title,
-      userId: sessionUser.id
-    }
-
+    const oldNotebook = await dispatch(deleteNotebook(notebook))
+    history.push('/home')
   };
 
   useEffect(() => {
@@ -34,9 +34,8 @@ function EditNotebookModal() {
     </header>
     <form
       className='notebook-form'
-      onSubmit={submit}
     >
-    <ul className='errors'>
+    {/* <ul className='errors'>
       {errors.map(error => (
         <li key={error}>{error}</li>
       ))}
@@ -50,9 +49,13 @@ function EditNotebookModal() {
           onChange={(e) => setTitle(e.target.value)}
           placeholder='Notebook name'
         />
-      </label>
-      <button type='submit'>Edit</button>
-      <button>Delete</button>
+      </label> */}
+      {/* <button type='submit'>Edit</button> */}
+      <button
+        onClick={handleDelete}
+      >
+        Delete
+    </button>
     </form>
   </div>
   )
