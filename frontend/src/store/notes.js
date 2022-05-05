@@ -110,6 +110,22 @@ const initialState = {};
 export default function notesReducer (state = initialState, action) {
   let newState;
   switch (action.type) {
+    case GET_NOTES:
+      newState = {};
+      action.payload.forEach(note => {
+        newState[note.id] = note
+      });
+      return newState;
+    case GET_NOTE:
+      newState = { ...state, note: action.payload }
+      return newState;
+    case POST_NOTE:
+      newState = { ...state, [action.payload.id]: action.payload }
+      return newState;
+    case DELETE_NOTE:
+      newState = { ...state };
+      delete newState[action.payload.id]
+      return newState
     default:
       return state
   }
