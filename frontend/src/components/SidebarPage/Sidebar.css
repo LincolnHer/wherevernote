@@ -24,3 +24,8 @@
 .nav-links {
   font-size: x-large;
 }
+
+.nav-links:active {
+  font-weight: bold;
+  background-color: grey;
+}

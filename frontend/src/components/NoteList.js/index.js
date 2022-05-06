@@ -20,7 +20,7 @@ function NoteList({ notes }) {
         </div>
         <div className='note-list-sub-header'>
           <div className='note-count'>
-            {notesArr.length}
+            {notesArr.length} notes
           </div>
         </div>
       </div>
