@@ -75,7 +75,7 @@ function Notebook() {
         ))}
       </div>
     </div>
-    <Note />
+    <Note notebooks={notebooksObj} notes={notesObj} />
     <Modal isOpen={modalIsOpen} style={customStyles}>
       <button onClick={setModalIsOpenToFalse} className="btn-red">x</button>
       <EditNotebookModal />
