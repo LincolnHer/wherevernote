@@ -16,16 +16,17 @@ function Notebook() {
   const dispatch = useDispatch();
   const { notebookId } = useParams();
   const sessionUser = useSelector(state => state.session.user)
-  const notebookObj = useSelector(state => state?.notebooks)
-  const notebooksArr = Object.values(notebookObj);
+  const notebooksObj = useSelector(state => state?.notebooks)
+
+  const notebooksArr = Object.values(notebooksObj);
   const notesObj = useSelector(state => state?.notes)
   const notesArr = Object.values(notesObj)
   const filteredNotes = notesArr?.filter(note => note?.notebookId === +notebookId)
-  console.log('filtered', filteredNotes)
+  // console.log('filtered', filteredNotes)
   // console.log('notebook state', notebooksArr)
   const singleNotebook = useSelector(state => state.notebooks[notebookId])
   // console.log(singleNotebook)
-  const uniqueNotebooks = [...new Map(notebooksArr.map(notebook => [JSON.stringify(notebook), notebook])).values()];
+  // const uniqueNotebooks = [...new Map(notebooksArr.map(notebook => [JSON.stringify(notebook), notebook])).values()];
   // console.log('no duplicates', uniqueNotebooks)
   const { modalIsOpen, setModalIsOpen, setModalIsOpenToTrue, setModalIsOpenToFalse, modalName, setModalName } = useModal();
   const customStyles = {
@@ -49,7 +50,7 @@ function Notebook() {
   return (
     <>
     <div className="home-page-content">
-      <Sidebar notebooks={uniqueNotebooks}/>
+      <Sidebar notebooks={notebooksObj}/>
       <div className='note-list'>
       <div className='note-list-header'>
         <div className='note-list-title'>
