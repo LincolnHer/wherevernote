@@ -13,6 +13,7 @@
 input {
   width: fit-content;
   margin: 10px;
+  height: 30px;
 }
 
 .btn {
@@ -49,4 +50,8 @@ input {
 
 .btn-red:hover {
   background-color: rgba(255, 0, 0, 0.8);
+}
+
+.errors {
+  color: red;
 }
