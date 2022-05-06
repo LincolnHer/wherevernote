@@ -52,12 +52,14 @@ function EditNotebookModal() {
         />
       </label> */}
       {/* <button type='submit'>Edit</button> */}
-      <button
-        onClick={handleDelete}
-        className="btn-red"
-      >
-        Delete
-    </button>
+      <div className='modal-btns'>
+        <button
+          onClick={handleDelete}
+          className="btn-red"
+        >
+          Delete
+      </button>
+      </div>
     </form>
   </div>
   )

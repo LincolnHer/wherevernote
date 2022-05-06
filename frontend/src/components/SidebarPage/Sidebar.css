@@ -20,3 +20,7 @@
     cursor: pointer;
     width: fit-content;
   }
+
+.nav-links {
+  font-size: x-large;
+}

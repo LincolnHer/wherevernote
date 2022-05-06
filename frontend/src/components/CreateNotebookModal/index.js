@@ -57,8 +57,10 @@ function CreateNotebookModal() {
           placeholder='Notebook name'
         />
       </label>
-      <button type='button' onClick={setModalIsOpenToFalse} className='btn-red'>Cancel</button>
-      <button type='submit' className='btn'>Create</button>
+      <div className='modal-btns'>
+        <button type='button' onClick={setModalIsOpenToFalse} className='btn-red'>Cancel</button>
+        <button type='submit' className='btn'>Create</button>
+      </div>
     </form>
   </div>
   )

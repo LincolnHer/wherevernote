@@ -24,3 +24,8 @@ height: 5vh;
   cursor: pointer;
   width: fit-content;
 }
+
+.nav-link {
+  background-color: gray;
+  padding: 10px;
+}

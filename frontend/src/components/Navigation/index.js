@@ -27,9 +27,31 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <NavLink exact to="/" style={{ color: 'white', textDecoration: 'none' }}>Wherevernote</NavLink>
-        <NavLink to="/login" style={{ color: 'white', textDecoration: 'none' }}>Log In</NavLink>
-        <NavLink to="/signup" style={{ color: 'white', textDecoration: 'none' }}>Sign Up</NavLink>
+        <NavLink
+          exact to="/"
+          style={{ color: 'white', textDecoration: 'none' }}
+          activeStyle={{ fontWeight: "bold" }}
+          activeClassName="nav-link"
+        >
+          Wherevernote
+        </NavLink>
+        <NavLink to="/login"
+          style={{ color: 'white',
+          textDecoration: 'none' }}
+          activeStyle={{ fontWeight: "bold" }}
+          activeClassName="nav-link"
+        >
+          Log In
+        </NavLink>
+        <NavLink
+          to="/signup"
+          style={{ color: 'white',
+          textDecoration: 'none' }}
+          activeStyle={{ fontWeight: "bold" }}
+          activeClassName="nav-link"
+        >
+          Sign Up
+        </NavLink>
         <button onClick={demoUser} className="btn">Demo User</button>
       </>
     );
