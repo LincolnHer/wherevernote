@@ -29,8 +29,12 @@ input {
   width: fit-content;
 }
 
+.btn:hover {
+  background-color: rgba(0,168,45, 0.8)
+}
+
 .btn-red {
-    background-color: red; /* Green */
+    background-color: red;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -42,3 +46,7 @@ input {
     cursor: pointer;
     width: fit-content;
   }
+
+.btn-red:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+}

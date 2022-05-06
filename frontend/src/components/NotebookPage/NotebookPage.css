@@ -13,7 +13,7 @@
   }
 
   .btn-blue {
-    background-color: #006BA6; /* Green */
+    background-color: #006BA6;
     border: none;
     color: white;
     padding: 3px 10px;
@@ -24,3 +24,7 @@
     margin: 4px 2px;
     cursor: pointer;
   }
+
+.btn-blue:hover {
+ background-color: rgba(0,107,166, .8);
+}
