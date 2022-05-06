@@ -53,8 +53,8 @@ function LoginFormPage() {
           required
         />
       </label>
-      <button type="submit">Log In</button>
-      <button onClick={demoUser}>Demo User</button>
+      <button type="submit" className="btn">Log In</button>
+      <button onClick={demoUser} className="btn">Demo User</button>
     </form>
   );
 }

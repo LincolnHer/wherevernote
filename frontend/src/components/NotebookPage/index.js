@@ -7,6 +7,7 @@ import { useModal } from "../../context/ModalContext";
 import Sidebar from "../SidebarPage";
 import EditNotebookModal from "../CreateNotebookModal/EditNotebookForm";
 import Note from "../Note";
+import './NotebookPage.css'
 
 
 function Notebook() {
@@ -19,7 +20,7 @@ function Notebook() {
   const singleNotebook = useSelector(state => state.notebooks[notebookId])
   // console.log(singleNotebook)
   const uniqueNotebooks = [...new Map(notebooksArr.map(notebook => [JSON.stringify(notebook), notebook])).values()];
-  console.log('no duplicates', uniqueNotebooks)
+  // console.log('no duplicates', uniqueNotebooks)
   const { modalIsOpen, setModalIsOpen, setModalIsOpenToTrue, setModalIsOpenToFalse, modalName, setModalName } = useModal();
   const customStyles = {
     content : {
@@ -51,11 +52,12 @@ function Notebook() {
         </div>
         <div className='note-list-sub-header'>
           <div className='note-count'>
-          <h4
+          <button
             onClick={() => {setModalIsOpen(true); setModalName('edit');}}
+            className="btn-blue"
           >
             Edit Notebook
-          </h4>
+          </button>
           </div>
         </div>
       </div>

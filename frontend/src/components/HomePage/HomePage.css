@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    width: fit-content;
     /* background-color: aquamarine; */
 }
 
@@ -18,4 +19,3 @@ li.nav-links.new{
 .Notebook-container {
  padding: 15px;
 }
-
