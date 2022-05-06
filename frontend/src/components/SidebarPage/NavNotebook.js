@@ -4,6 +4,7 @@ import { useModal } from "../../context/ModalContext"
 import Modal from 'react-modal'
 import CreateNotebookModal from "../CreateNotebookModal"
 import EditNotebookModal from "../CreateNotebookModal/EditNotebookForm";
+import './Sidebar.css'
 
 Modal.setAppElement('#root');
 
@@ -18,7 +19,8 @@ function NavNotebook({ notebooks }) {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      backgroundColor: 'white'
+      backgroundColor: 'black',
+      color: 'white'
     }
 };
 
@@ -46,7 +48,7 @@ function NavNotebook({ notebooks }) {
           New Notebook
         </li>
         <Modal isOpen={modalIsOpen} style={customStyles}>
-          <button onClick={setModalIsOpenToFalse}>x</button>
+          <button className="btn-red" onClick={setModalIsOpenToFalse}>x</button>
           {modalName === 'edit' ? <EditNotebookModal /> : <CreateNotebookModal />}
         </Modal>
       </div>

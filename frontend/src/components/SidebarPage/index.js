@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from 'react-router-dom'
 import NavNotebook from "./NavNotebook";
 import { useModal } from '../../context/ModalContext'
+import './Sidebar.css'
 
 function Sidebar({ notebooks }) {
   const [showNotebooks, setShowNotebooks] = useState(false)

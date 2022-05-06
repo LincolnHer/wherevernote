@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import { getNotebooks } from "../../store/notebook";
+import Note from "../Note";
+import NoteList from "../NoteList.js";
 import Sidebar from "../SidebarPage";
 import './HomePage.css'
 
@@ -20,14 +22,11 @@ function HomePage() {
    }
 
   return (
-    <>
-      <h1>Hello From Home Page</h1>
-      <div className="home-page-content">
-        <div className="sidebar">
-          <Sidebar notebooks={notebooksObj}/>
-        </div>
-      </div>
-    </>
+    <div className="home-page-content">
+      <Sidebar notebooks={notebooksObj}/>
+      <NoteList />
+      <Note />
+    </div>
   )
 }
 

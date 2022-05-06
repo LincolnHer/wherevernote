@@ -27,20 +27,20 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <NavLink exact to="/">Wherevernote</NavLink>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-        <button onClick={demoUser}>Demo User</button>
+        <NavLink exact to="/" style={{ color: 'white', textDecoration: 'none' }}>Wherevernote</NavLink>
+        <NavLink to="/login" style={{ color: 'white', textDecoration: 'none' }}>Log In</NavLink>
+        <NavLink to="/signup" style={{ color: 'white', textDecoration: 'none' }}>Sign Up</NavLink>
+        <button onClick={demoUser} className="btn">Demo User</button>
       </>
     );
   }
 
   return (
-    <ul>
-      <li>
+    <div>
+      <div className='nav-bar'>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+      </div>
+    </div>
   );
 }
 
