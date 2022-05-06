@@ -1,39 +1,33 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { useParams } from 'react-router-dom';
 // import { useModal } from '../../context/ModalContext';
+import NoteCard from './NoteCard';
 import './NoteList.css'
 
-function NoteList() {
+function NoteList({ notes }) {
+  const sessionUser = useSelector(state => state.session.user)
+  const notesArr = Object.values(notes);
 
   return (
     <div className='note-list'>
       <div className='note-list-header'>
         <div className='note-list-title'>
             <h1 className='note-h1'>
-              Notes
+              All Notes
             </h1>
         </div>
         <div className='note-list-sub-header'>
           <div className='note-count'>
-            notes length
+            {notesArr.length}
           </div>
         </div>
       </div>
       <div className='note-list-body'>
-        <div className='note-card'>
-          <div className='note-card-head'>
-            <div className='note-card-title'>
-              note title
-            </div>
-            <div className='note-card-desc '>
-              some description
-            </div>
-          </div>
-          <div className='note-card-date'>
-            date
-          </div>
-        </div>
+        {notesArr?.map(note => (
+          <NoteCard key={note?.id} note={note}/>
+        ))}
       </div>
     </div>
   )

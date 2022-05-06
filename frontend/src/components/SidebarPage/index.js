@@ -4,7 +4,7 @@ import NavNotebook from "./NavNotebook";
 import { useModal } from '../../context/ModalContext'
 import './Sidebar.css'
 
-function Sidebar({ notebooks }) {
+function Sidebar({ notebooks, notes }) {
   const [showNotebooks, setShowNotebooks] = useState(false)
   const { setModalIsOpen } = useModal();
 
@@ -13,7 +13,7 @@ function Sidebar({ notebooks }) {
     <div className="sidebar">
       <ul>
         <li className="nav-links">
-          <NavLink style={{ color: 'white', textDecoration: 'none' }} to='/home'>home</NavLink>
+          <NavLink style={{ color: 'white', textDecoration: 'none' }} to='/home'>Home</NavLink>
         </li>
         <li
         onClick={ () => setShowNotebooks(!showNotebooks) }
@@ -22,7 +22,7 @@ function Sidebar({ notebooks }) {
           Notebooks
         </li>
         {showNotebooks &&
-          <NavNotebook notebooks={notebooks}/>
+          <NavNotebook notebooks={notebooks} notes={notes}/>
         }
       </ul>
     </div>

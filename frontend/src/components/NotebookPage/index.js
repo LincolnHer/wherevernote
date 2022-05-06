@@ -2,20 +2,26 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom'
 import Modal from 'react-modal'
-import { getSingleNotebook } from "../../store/notebook";
+import { getNotebooks } from "../../store/notebook";
+import { getNotes } from "../../store/notes";
 import { useModal } from "../../context/ModalContext";
 import Sidebar from "../SidebarPage";
 import EditNotebookModal from "../CreateNotebookModal/EditNotebookForm";
 import Note from "../Note";
+import NoteCard from "../NoteList.js/NoteCard";
 import './NotebookPage.css'
 
 
 function Notebook() {
   const dispatch = useDispatch();
   const { notebookId } = useParams();
-  const notebookObj = useSelector(state => state.notebooks)
-  const notebook = useSelector(state => state.notebooks.notebook)
+  const sessionUser = useSelector(state => state.session.user)
+  const notebookObj = useSelector(state => state?.notebooks)
   const notebooksArr = Object.values(notebookObj);
+  const notesObj = useSelector(state => state?.notes)
+  const notesArr = Object.values(notesObj)
+  const filteredNotes = notesArr?.filter(note => note?.notebookId === +notebookId)
+  console.log('filtered', filteredNotes)
   // console.log('notebook state', notebooksArr)
   const singleNotebook = useSelector(state => state.notebooks[notebookId])
   // console.log(singleNotebook)
@@ -35,13 +41,14 @@ function Notebook() {
     }
 };
 
-  // useEffect(() => {
-  //   dispatch(getSingleNotebook(notebookId))
-  // }, [dispatch])
+  useEffect(() => {
+    dispatch(getNotebooks(sessionUser?.id))
+    dispatch(getNotes(sessionUser?.id))
+  }, [dispatch])
 
   return (
+    <>
     <div className="home-page-content">
-
       <Sidebar notebooks={uniqueNotebooks}/>
       <div className='note-list'>
       <div className='note-list-header'>
@@ -62,19 +69,9 @@ function Notebook() {
         </div>
       </div>
       <div className='note-list-body'>
-        <div className='note-card'>
-          <div className='note-card-head'>
-            <div className='note-card-title'>
-              note title
-            </div>
-            <div className='note-card-desc '>
-              some description
-            </div>
-          </div>
-          <div className='note-card-date'>
-            date
-          </div>
-        </div>
+      {filteredNotes?.map(note => (
+          <NoteCard key={note?.id} note={note}/>
+        ))}
       </div>
     </div>
     <Note />
@@ -83,6 +80,7 @@ function Notebook() {
       <EditNotebookModal />
     </Modal>
     </div>
+  </>
   )
 }
 
