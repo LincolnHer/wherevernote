@@ -11,7 +11,6 @@ function Sidebar({ notebooks }) {
   // Create notebooks nav input
   return (
     <div className="sidebar">
-      <h1>Hello from sidebar</h1>
       <ul>
         <li className="nav-links">
           <NavLink style={{ color: 'white', textDecoration: 'none' }} to='/home'>home</NavLink>

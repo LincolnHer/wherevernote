@@ -12,6 +12,10 @@ li.nav-links:hover {
   cursor: pointer;
 }
 
+/* li.nav-links {
+  list-style-type: none;
+} */
+
 li.nav-links.new{
   color: #00A82D;
 }
