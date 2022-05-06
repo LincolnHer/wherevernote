@@ -6,11 +6,13 @@ import { getSingleNotebook } from "../../store/notebook";
 import { useModal } from "../../context/ModalContext";
 import Sidebar from "../SidebarPage";
 import EditNotebookModal from "../CreateNotebookModal/EditNotebookForm";
+import Note from "../Note";
+import './NotebookPage.css'
+
 
 function Notebook() {
   const dispatch = useDispatch();
   const { notebookId } = useParams();
-  // const sessionUser = useSelector(state => state.session.user);
   const notebookObj = useSelector(state => state.notebooks)
   const notebook = useSelector(state => state.notebooks.notebook)
   const notebooksArr = Object.values(notebookObj);
@@ -28,7 +30,8 @@ function Notebook() {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      backgroundColor: 'white'
+      backgroundColor: 'black',
+      color: 'white'
     }
 };
 
@@ -37,21 +40,48 @@ function Notebook() {
   // }, [dispatch])
 
   return (
-    <div className="notebook-container">
-      <h1>hello from Notebook</h1>
+    <div className="home-page-content">
+
       <Sidebar notebooks={uniqueNotebooks}/>
-      <div className="notes-content">
-        <h2>{singleNotebook?.title}</h2>
-        <h3
-          onClick={() => {setModalIsOpen(true); setModalName('edit');}}
+      <div className='note-list'>
+      <div className='note-list-header'>
+        <div className='note-list-title'>
+            <h1 className='note-h1'>
+              {singleNotebook?.title}
+            </h1>
+        </div>
+        <div className='note-list-sub-header'>
+          <div className='note-count'>
+          <button
+            onClick={() => {setModalIsOpen(true); setModalName('edit');}}
+            className="btn-blue"
           >
-          Edit Notebook
-        </h3>
-        <Modal isOpen={modalIsOpen} style={customStyles}>
-          <button onClick={setModalIsOpenToFalse}>x</button>
-          <EditNotebookModal />
-        </Modal>
+            Edit Notebook
+          </button>
+          </div>
+        </div>
       </div>
+      <div className='note-list-body'>
+        <div className='note-card'>
+          <div className='note-card-head'>
+            <div className='note-card-title'>
+              note title
+            </div>
+            <div className='note-card-desc '>
+              some description
+            </div>
+          </div>
+          <div className='note-card-date'>
+            date
+          </div>
+        </div>
+      </div>
+    </div>
+    <Note />
+    <Modal isOpen={modalIsOpen} style={customStyles}>
+      <button onClick={setModalIsOpenToFalse} className="btn-red">x</button>
+      <EditNotebookModal />
+    </Modal>
     </div>
   )
 }

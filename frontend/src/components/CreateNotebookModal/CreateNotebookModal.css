@@ -1,0 +1,57 @@
+.notebook-modal {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.notebook-form {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+input {
+  width: fit-content;
+  margin: 10px;
+  height: 30px;
+}
+
+.btn {
+  background-color: #00A82D; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px 10px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.btn:hover {
+  background-color: rgba(0,168,45, 0.8)
+}
+
+.btn-red {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 4px;
+    cursor: pointer;
+    width: fit-content;
+  }
+
+.btn-red:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+}
+
+.errors {
+  color: red;
+}

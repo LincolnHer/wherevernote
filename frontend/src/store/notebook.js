@@ -56,8 +56,8 @@ export const getSingleNotebook = (notebookId) => async dispatch => {
   const res = await fetch(`/api/notebooks/notebook/${notebookId}`)
 
   if (res.ok) {
-    const singleNotebook = await res.json()
-    dispatch(getNotebook(singleNotebook))
+    const singleNotebook = await res.json();
+    dispatch(getNotebook(singleNotebook));
   }
 }
 
@@ -76,8 +76,8 @@ export const createNotebook = (notebook) => async dispatch => {
 }
 
 // PUT edit a notebook
-export const editNotebook = (notebook) => async dispatch => {
-  const res = await csrfFetch(`/api/notebooks/notebook/${notebook.id}`,
+export const editNotebook = (notebook, notebookId) => async dispatch => {
+  const res = await csrfFetch(`/api/notebooks/notebook/${notebookId}`,
   {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -85,8 +85,8 @@ export const editNotebook = (notebook) => async dispatch => {
   })
 
   if (res.ok) {
-    const editedNotebook = await res.json();
-    dispatch(putNotebook(editedNotebook));
+    const updatedNotebook = await res.json();
+    dispatch(putNotebook(updatedNotebook));
   }
 };
 

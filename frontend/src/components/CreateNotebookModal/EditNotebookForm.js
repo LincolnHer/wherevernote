@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
 import { useModal } from "../../context/ModalContext"
 import { deleteNotebook } from "../../store/notebook"
+import './CreateNotebookModal.css'
 
 function EditNotebookModal() {
   const dispatch = useDispatch();
@@ -51,11 +52,14 @@ function EditNotebookModal() {
         />
       </label> */}
       {/* <button type='submit'>Edit</button> */}
-      <button
-        onClick={handleDelete}
-      >
-        Delete
-    </button>
+      <div className='modal-btns'>
+        <button
+          onClick={handleDelete}
+          className="btn-red"
+        >
+          Delete
+      </button>
+      </div>
     </form>
   </div>
   )

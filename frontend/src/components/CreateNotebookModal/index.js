@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from "../../context/ModalContext"
 import { createNotebook } from '../../store/notebook'
+import './CreateNotebookModal.css'
 
 
 function CreateNotebookModal() {
@@ -56,8 +57,10 @@ function CreateNotebookModal() {
           placeholder='Notebook name'
         />
       </label>
-      <button type='button' onClick={setModalIsOpenToFalse} >Cancel</button>
-      <button type='submit'>Create</button>
+      <div className='modal-btns'>
+        <button type='button' onClick={setModalIsOpenToFalse} className='btn-red'>Cancel</button>
+        <button type='submit' className='btn' disabled={errors.length >0}>Create</button>
+      </div>
     </form>
   </div>
   )

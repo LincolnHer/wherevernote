@@ -8,13 +8,13 @@ const { Notebook, Note } = require('../../db/models')
 // GET all notebooks of one user only
 router.get('/:userId', asyncHandler(async(req, res) => {
   const userId = req.params.userId
-//   console.log(userId)
+  
   const notebooks = await Notebook.findAll({
       where: {
-          userId: userId
+        userId: userId
       },
       order: [
-          ['createdAt', 'DESC']
+        ['createdAt', 'DESC']
       ]
   })
 
