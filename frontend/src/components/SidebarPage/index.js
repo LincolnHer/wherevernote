@@ -16,7 +16,7 @@ function Sidebar({ notebooks, notes }) {
           <NavLink style={{ color: 'white', textDecoration: 'none' }} to='/home'>Home</NavLink>
         </li>
         <li
-        onClick={ () => setShowNotebooks(!showNotebooks) }
+        onClick={ () => {setShowNotebooks(!showNotebooks); setModalIsOpen(false) } }
         className="nav-links"
         >
           Notebooks
