@@ -9,6 +9,7 @@ import './NoteList.css'
 function NoteList({ notes }) {
   const sessionUser = useSelector(state => state.session.user)
   const notesArr = Object.values(notes);
+  notesArr.reverse();
 
   return (
     <div className='note-list'>

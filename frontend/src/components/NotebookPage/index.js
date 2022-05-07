@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
 import Modal from 'react-modal'
 import { getNotebooks } from "../../store/notebook";
 import { getNotes } from "../../store/notes";
@@ -17,11 +17,11 @@ function Notebook() {
   const { notebookId } = useParams();
   const sessionUser = useSelector(state => state.session.user)
   const notebooksObj = useSelector(state => state?.notebooks)
-
   const notebooksArr = Object.values(notebooksObj);
   const notesObj = useSelector(state => state?.notes)
   const notesArr = Object.values(notesObj)
   const filteredNotes = notesArr?.filter(note => note?.notebookId === +notebookId)
+  filteredNotes.reverse();
   // console.log('filtered', filteredNotes)
   // console.log('notebook state', notebooksArr)
   const singleNotebook = useSelector(state => state.notebooks[notebookId])
@@ -46,6 +46,10 @@ function Notebook() {
     dispatch(getNotebooks(sessionUser?.id))
     dispatch(getNotes(sessionUser?.id))
   }, [dispatch])
+
+if (!sessionUser) {
+  return <Redirect to="/" />
+  }
 
   return (
     <>

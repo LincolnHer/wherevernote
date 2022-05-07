@@ -22,7 +22,6 @@ function CreateNotebookModal() {
     }
 
     const notebook = await dispatch(createNotebook(formValues));
-
   };
 
   useEffect(() => {
