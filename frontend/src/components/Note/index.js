@@ -71,9 +71,6 @@ function Note({ notebooks, notes }) {
                 ))}
               </select>
             </div>
-            <label>
-              title
-            </label>
             <input
               type='text'
               name='title'
@@ -96,14 +93,6 @@ function Note({ notebooks, notes }) {
             <button className='btn' disabled={errors.length > 0} type='submit'>Create</button>
           </div>
         </form>
-        <div className='note-preview'>
-          <div className='note-preview-title'>
-            title
-          </div>
-          <div className='note-preview-body'>
-            body
-          </div>
-        </div>
       </div>
     </div>
   )
