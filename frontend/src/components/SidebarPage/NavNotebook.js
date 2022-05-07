@@ -10,7 +10,7 @@ Modal.setAppElement('#root');
 
 function NavNotebook({ notebooks }) {
   const notebooksArr = Object.values(notebooks)
-  const { modalIsOpen, setModalIsOpen, setModalIsOpenToTrue, setModalIsOpenToFalse, modalName, setModalName } = useModal();
+  const { modalIsOpen1, setModalIsOpen1, setModal1IsOpenToTrue, setModal1IsOpenToFalse, modalName, setModalName } = useModal();
   const customStyles = {
     content : {
       top: '50%',
@@ -27,6 +27,7 @@ function NavNotebook({ notebooks }) {
 //   console.log(notebooksArr)
 
   return (
+    <>
     <ul>
       <div>
         {notebooksArr?.length > 0 && notebooksArr?.map((notebook) => (
@@ -43,16 +44,18 @@ function NavNotebook({ notebooks }) {
         ))}
         <li
         className="nav-links new"
-        onClick={() => {setModalIsOpen(true); setModalName('create');}}
+        onClick={() => {setModalIsOpen1(true); setModalName('create');}}
         >
           New Notebook
         </li>
-        <Modal isOpen={modalIsOpen} style={customStyles}>
-          <button className="btn-red" onClick={setModalIsOpenToFalse}>x</button>
-          {modalName === 'edit' ? <EditNotebookModal /> : <CreateNotebookModal />}
-        </Modal>
       </div>
     </ul>
+        <Modal isOpen={modalIsOpen1} style={customStyles}>
+          <button className="btn-red" onClick={setModal1IsOpenToFalse}>x</button>
+          {/* {modalName === 'create' ? <CreateNotebookModal />: null} */}
+          <CreateNotebookModal />
+        </Modal>
+          </>
   )
 }
 

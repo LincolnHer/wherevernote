@@ -10,6 +10,7 @@ import EditNotebookModal from "../CreateNotebookModal/EditNotebookForm";
 import Note from "../Note";
 import NoteCard from "../NoteList.js/NoteCard";
 import './NotebookPage.css'
+import EditNoteForm from "../CreateNotebookModal/EditNoteForm";
 
 
 function Notebook() {
@@ -22,13 +23,9 @@ function Notebook() {
   const notesArr = Object.values(notesObj)
   const filteredNotes = notesArr?.filter(note => note?.notebookId === +notebookId)
   filteredNotes.reverse();
-  // console.log('filtered', filteredNotes)
-  // console.log('notebook state', notebooksArr)
   const singleNotebook = useSelector(state => state.notebooks[notebookId])
-  // console.log(singleNotebook)
-  // const uniqueNotebooks = [...new Map(notebooksArr.map(notebook => [JSON.stringify(notebook), notebook])).values()];
-  // console.log('no duplicates', uniqueNotebooks)
-  const { modalIsOpen, setModalIsOpen, setModalIsOpenToTrue, setModalIsOpenToFalse, modalName, setModalName } = useModal();
+  const { modalIsOpen2, setModalIsOpen2, setModal2IsOpenToTrue, setModal2IsOpenToFalse, modalName, setModalName } = useModal();
+  console.log(modalName)
   const customStyles = {
     content : {
       top: '50%',
@@ -68,7 +65,7 @@ if (!sessionUser) {
         <div className='note-list-sub-header'>
           <div className='note-count'>
           <button
-            onClick={() => {setModalIsOpen(true); setModalName('edit');}}
+            onClick={() => {setModalIsOpen2(true); setModalName('edit');}}
             className="btn-blue"
           >
             Edit Notebook
@@ -83,11 +80,11 @@ if (!sessionUser) {
       </div>
     </div>
     <Note notebooks={notebooksObj} notes={notesObj} />
-    <Modal isOpen={modalIsOpen} style={customStyles}>
-      <button onClick={setModalIsOpenToFalse} className="btn-red">x</button>
-      <EditNotebookModal />
-    </Modal>
     </div>
+    <Modal isOpen={modalIsOpen2} style={customStyles}>
+      <button onClick={setModal2IsOpenToFalse} className="btn-red">x</button>
+      {modalName === 'edit' ? <EditNotebookModal /> : <EditNoteForm />}
+    </Modal>
   </>
   )
 }
