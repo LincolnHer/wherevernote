@@ -43,10 +43,11 @@ function Notebook() {
 };
 
   useEffect(() => {
+    if (!sessionUser?.id) return
     dispatch(getNotebooks(sessionUser?.id))
     dispatch(getNotes(sessionUser?.id))
 
-    
+
   }, [dispatch])
 
 if (!sessionUser) {

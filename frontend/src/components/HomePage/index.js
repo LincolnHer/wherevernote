@@ -16,6 +16,7 @@ function HomePage() {
   // console.log('notebook normalized state', notebooksObj)
 
   useEffect(() => {
+    if (!sessionUser?.id) return
     dispatch(getNotebooks(sessionUser?.id))
     dispatch(getNotes(sessionUser?.id))
   }, [dispatch]);
