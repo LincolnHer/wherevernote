@@ -25,7 +25,7 @@ function Notebook() {
   filteredNotes.reverse();
   const singleNotebook = useSelector(state => state.notebooks[notebookId])
   const { modalIsOpen2, setModalIsOpen2, setModal2IsOpenToTrue, setModal2IsOpenToFalse, modalName, setModalName } = useModal();
-  console.log(modalName)
+  
   const customStyles = {
     content : {
       top: '50%',

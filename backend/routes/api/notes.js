@@ -44,6 +44,7 @@ router.post('/', asyncHandler(async(req, res) => {
   })
 
   return res.json(createNote)
+
 }))
 
 //ROUTE /api/notes/note/:noteId

@@ -11,9 +11,11 @@ function Note({ notebooks, notes }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user)
+
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [notebook, setNotebook] = useState(notebookId);
+  // console.log(notebook)
   const [errors, setErrors] = useState([]);
   const notebooksArr = Object.values(notebooks)
 
@@ -23,13 +25,15 @@ function Note({ notebooks, notes }) {
 
     const formValues = {
       userId: sessionUser.id,
-      notebookId: notebookId,
+      notebookId: notebook,
       title: title,
       content: content,
     }
 
+    console.log(formValues)
+
     const note = await dispatch(createNote(formValues));
-    history.push(`/notebooks/${notebookId}`)
+    history.push(`/notebooks/${notebook}`)
     setTitle('');
     setContent('');
     setNotebook(notebookId);
@@ -40,7 +44,11 @@ function Note({ notebooks, notes }) {
     if (!title.length) validationErrors.push('Your note name must contain at least one character');
     if (title.length > 50) validationErrors.push("Your note name cannot be longer than 50 characters");
     if (content.length < 1) validationErrors.push("Your note must contain atleast 1 character")
+    if (!notebook) validationErrors.push('You must select a notebook')
     setErrors(validationErrors);
+
+    return
+
   }, [title, content]);
 
   return (
@@ -58,15 +66,15 @@ function Note({ notebooks, notes }) {
         </ul>)}
           <div className='note-title'>
             <div className='select-notebook'>
-              <p>choose notebook...</p>
               <select
                 name="notebookId"
                 onChange={(e) => setNotebook(e.target.value)}
                 value={notebookId}
               >
+                <option value='' >choose a notebook...</option>
                 {notebooksArr?.map(notebook => (
-                  <option key={notebook.id} value={notebook.id}>
-                    {notebook.title}
+                  <option key={notebook?.id} value={notebook?.id}>
+                    {notebook?.title}
                   </option>
                 ))}
               </select>

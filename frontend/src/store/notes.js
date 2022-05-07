@@ -74,7 +74,8 @@ export const createNote = (note) => async dispatch => {
   })
 
   if (res.ok) {
-    const newNote = await res.json();
+    const newNote = await res.json()
+    console.log(newNote)
     dispatch(postNote(newNote));
   }
 };

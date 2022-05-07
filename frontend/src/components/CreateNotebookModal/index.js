@@ -29,7 +29,6 @@ function CreateNotebookModal() {
     }
 
     const notebook = await dispatch(createNotebook(formValues));
-    // localStorage.setItem()
 
     // history.push(`/notebooks/${notebook.id}`)
   };

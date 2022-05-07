@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import NoteCard from './NoteCard';
 import './NoteList.css'
 
-function NoteList({ notes }) {
+function NoteList({ notebooks, notes }) {
   const sessionUser = useSelector(state => state.session.user)
   const notesArr = Object.values(notes);
   notesArr.reverse();
@@ -26,7 +26,7 @@ function NoteList({ notes }) {
       </div>
       <div className='note-list-body'>
         {notesArr?.map(note => (
-          <NoteCard key={note?.id} note={note}/>
+          <NoteCard key={note?.id} note={note} />
         ))}
       </div>
     </div>

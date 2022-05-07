@@ -31,11 +31,18 @@ function NoteCard({ note }) {
     const oldNote = await dispatch(deleteNote(singleNote))
   }
 
+  useEffect(() => {
+    return
+  }, [noteId])
+
 return (
   <>
   <div className="note-card" onClick={ () => { setnoteId(note?.id); localStorage.setItem('note', note?.id) } }>
     <div className="note-card-head">
-      <div className='note-card-id'>note {note?.id}</div>
+      <div className='note-card-id'>
+
+        note {note?.id}
+      </div>
       <div className="note-card-title">{note?.title}</div>
       <div className="note-card-desc ">{note?.content}</div>
       <div className='btn-box'>

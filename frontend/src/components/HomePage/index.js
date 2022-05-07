@@ -28,7 +28,7 @@ function HomePage() {
   return (
     <div className="home-page-content">
       <Sidebar notebooks={notebooksObj} notes={notesObj}/>
-      <NoteList notes={notesObj}/>
+      <NoteList notebooks={notebooksObj} notes={notesObj}/>
       <Note notebooks={notebooksObj} notes={notesObj} />
     </div>
   )
