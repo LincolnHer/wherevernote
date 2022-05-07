@@ -44,7 +44,7 @@ function NavNotebook({ notebooks }) {
         ))}
         <li
         className="nav-links new"
-        onClick={() => {setModalIsOpen1(true); setModalName('create');}}
+        onClick={() => {setModalIsOpen1(true);}}
         >
           New Notebook
         </li>

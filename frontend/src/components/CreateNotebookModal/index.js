@@ -17,12 +17,12 @@ function CreateNotebookModal() {
   const history = useHistory();
   const [title, setTitle] = useState('')
   const [errors, setErrors] = useState([])
-  const { setModalIsOpenToFalse } = useModal();
+  const { setModal1IsOpenToFalse } = useModal();
   // const [notebookId, setnotebookId] = useState('')
 
   const submit = async (e) => {
     e.preventDefault();
-    setModalIsOpenToFalse();
+    setModal1IsOpenToFalse();
     const formValues = {
       title: title,
       userId: sessionUser.id
@@ -68,7 +68,7 @@ function CreateNotebookModal() {
         />
       </label>
       <div className='modal-btns'>
-        <button type='button' onClick={setModalIsOpenToFalse} className='btn-red'>Cancel</button>
+        <button type='button' onClick={setModal1IsOpenToFalse} className='btn-red'>Cancel</button>
         <button type='submit' className='btn' disabled={errors.length >0}>Create</button>
       </div>
     </form>

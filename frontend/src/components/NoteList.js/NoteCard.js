@@ -41,7 +41,7 @@ return (
       <div className='btn-box'>
         <button
           className='btn-blue'
-          onClick={() => { setModalIsOpen3(true); setModalName('editNote') }}
+          onClick={() => { setModalIsOpen3(true); }}
         >
           Edit Note
         </button>
@@ -56,7 +56,8 @@ return (
   </div>
     <Modal isOpen={modalIsOpen3} style={customStyles}>
       <button onClick={setModal3IsOpenToFalse} className="btn-red">x</button>
-      {modalName === 'editNote' ? <EditNoteForm /> : <EditNotebookModal />}
+      {/* {modalName === 'editNote' ? <EditNoteForm /> : <EditNotebookModal />} */}
+      <EditNoteForm />
     </Modal>
     </>
 );

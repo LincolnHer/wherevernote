@@ -6,7 +6,7 @@ import './Sidebar.css'
 
 function Sidebar({ notebooks, notes }) {
   const [showNotebooks, setShowNotebooks] = useState(false)
-  const { setModalIsOpen } = useModal();
+  const { setModalIsOpen1 } = useModal();
 
   // Create notebooks nav input
   return (
@@ -16,7 +16,7 @@ function Sidebar({ notebooks, notes }) {
           <NavLink style={{ color: 'white', textDecoration: 'none' }} to='/home'>Home</NavLink>
         </li>
         <li
-          onClick={ () => {setShowNotebooks(!showNotebooks); setModalIsOpen(false) } }
+          onClick={ () => {setShowNotebooks(!showNotebooks); setModalIsOpen1(false) } }
           className="nav-links"
         >
           Notebooks

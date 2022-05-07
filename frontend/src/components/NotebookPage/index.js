@@ -65,7 +65,7 @@ if (!sessionUser) {
         <div className='note-list-sub-header'>
           <div className='note-count'>
           <button
-            onClick={() => {setModalIsOpen2(true); setModalName('edit');}}
+            onClick={() => {setModalIsOpen2(true);}}
             className="btn-blue"
           >
             Edit Notebook
@@ -83,7 +83,8 @@ if (!sessionUser) {
     </div>
     <Modal isOpen={modalIsOpen2} style={customStyles}>
       <button onClick={setModal2IsOpenToFalse} className="btn-red">x</button>
-      {modalName === 'edit' ? <EditNotebookModal /> : <EditNoteForm />}
+      {/* {modalName === 'edit' ? <EditNotebookModal /> : <EditNoteForm />} */}
+      <EditNotebookModal />
     </Modal>
   </>
   )
