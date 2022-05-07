@@ -13,10 +13,11 @@ function EditNotebookModal() {
   const notebook = useSelector(state => state.notebooks[notebookId]);
   const [title, setTitle] = useState('')
   const [errors, setErrors] = useState([])
-  const { setModalIsOpen, setModalIsOpenToFalse } = useModal();
+  const { setModalIsOpen2, setModal2IsOpenToFalse } = useModal();
 
   const handleDelete = async (e) => {
     e.preventDefault();
+    setModal2IsOpenToFalse();
     const oldNotebook = await dispatch(deleteNotebook(notebook))
     history.push('/home')
   };
