@@ -35,6 +35,7 @@ router.get('/note/:noteId', asyncHandler(async(req, res) => {
 //ROUTE /api/notes/
 router.post('/', asyncHandler(async(req, res) => {
   const { userId, notebookId, title, content } = req.body;
+
   const createNote = await Note.create({
     userId: userId,
     notebookId: notebookId,
@@ -42,17 +43,7 @@ router.post('/', asyncHandler(async(req, res) => {
     content: content,
   })
 
-  const notes = await Note.findAll({
-    where: {
-      userId: userId,
-      notebookId: notebookId,
-    },
-    order: [
-      ['updatedAt', 'DESC']
-    ]
-  })
-
-  return res.json(notes)
+  return res.json(createNote)
 }))
 
 //ROUTE /api/notes/note/:noteId

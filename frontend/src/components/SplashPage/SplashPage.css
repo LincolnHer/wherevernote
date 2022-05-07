@@ -4,8 +4,13 @@
 
 a {
   color: black;
+  display: block;
 }
 
 a:hover {
   color: #00A82D;
+}
+
+.nav {
+  display: block;
 }
