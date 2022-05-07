@@ -1,23 +1,22 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNote, editNote } from '../../store/notes';
+import { createNote } from '../../store/notes';
 import './Note.css'
 
 function Note({ notebooks, notes }) {
+  const { notebookId } = useParams();
+  // console.log(notebookId)
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user)
-
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
-  const [notebookId, setNotebookId] = useState(1)
-  // console.log(notebookId)
+  const [notebook, setNotebook] = useState(notebookId);
   const [errors, setErrors] = useState([]);
-
   const notebooksArr = Object.values(notebooks)
-  // console.log(notebooksArr)
+
 
   const submit = async (e) => {
     e.preventDefault();
@@ -33,7 +32,7 @@ function Note({ notebooks, notes }) {
     history.push(`/notebooks/${notebookId}`)
     setTitle('');
     setContent('');
-    setNotebookId(1);
+    setNotebook(notebookId);
   };
 
   useEffect(() => {
@@ -43,10 +42,6 @@ function Note({ notebooks, notes }) {
     if (content.length < 1) validationErrors.push("Your note must contain atleast 1 character")
     setErrors(validationErrors);
   }, [title, content]);
-
-  useEffect(() => {
-    localStorage.getItem('note')
-  }, [])
 
   return (
     <div className='note-container'>
@@ -66,7 +61,7 @@ function Note({ notebooks, notes }) {
               <p>choose notebook...</p>
               <select
                 name="notebookId"
-                onChange={(e) => setNotebookId(e.target.value)}
+                onChange={(e) => setNotebook(e.target.value)}
                 value={notebookId}
               >
                 {notebooksArr?.map(notebook => (
@@ -98,7 +93,7 @@ function Note({ notebooks, notes }) {
             </textarea>
           </div>
           <div className='note-actions'>
-            <button className='btn' disabled={errors.length >0} type='submit'>Create</button>
+            <button className='btn' disabled={errors.length > 0} type='submit'>Create</button>
           </div>
         </form>
         <div className='note-preview'>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { useModal } from "../../context/ModalContext"
 import { createNotebook } from '../../store/notebook'
 import './CreateNotebookModal.css'
@@ -9,9 +10,15 @@ function CreateNotebookModal() {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector(state => state.session.user);
+  const notebooksObj = useSelector(state => state.notebooks)
+  const notebooksArr = Object.values(notebooksObj)
+  const notebookTitles = notebooksArr.map(notebook => notebook.title)
+  // console.log(notebookTitles)
+  const history = useHistory();
   const [title, setTitle] = useState('')
   const [errors, setErrors] = useState([])
   const { setModalIsOpenToFalse } = useModal();
+  // const [notebookId, setnotebookId] = useState('')
 
   const submit = async (e) => {
     e.preventDefault();
@@ -22,12 +29,16 @@ function CreateNotebookModal() {
     }
 
     const notebook = await dispatch(createNotebook(formValues));
+    // localStorage.setItem()
+
+    // history.push(`/notebooks/${notebook.id}`)
   };
 
   useEffect(() => {
     const validationErrors = [];
     if (!title.length) validationErrors.push('Your notebook name must contain at least one character');
     if (title.length > 50) validationErrors.push("Your notebook name cannot be longer than 50 characters");
+    if (notebookTitles.includes(title)) validationErrors.push(`Notebook name '${title}' is already in use`)
     setErrors(validationErrors);
   }, [title]);
 
