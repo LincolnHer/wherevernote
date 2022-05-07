@@ -45,6 +45,8 @@ function Notebook() {
   useEffect(() => {
     dispatch(getNotebooks(sessionUser?.id))
     dispatch(getNotes(sessionUser?.id))
+
+    
   }, [dispatch])
 
 if (!sessionUser) {

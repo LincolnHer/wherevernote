@@ -2,19 +2,19 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNote, editNote, deleteNote } from '../../store/notes';
+import { createNote, editNote } from '../../store/notes';
 import './Note.css'
 
 function Note({ notebooks, notes }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user)
+
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [notebookId, setNotebookId] = useState(1)
   // console.log(notebookId)
   const [errors, setErrors] = useState([]);
-  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const notebooksArr = Object.values(notebooks)
   // console.log(notebooksArr)
@@ -22,7 +22,6 @@ function Note({ notebooks, notes }) {
   const submit = async (e) => {
     e.preventDefault();
 
-    setHasSubmitted(true);
     const formValues = {
       userId: sessionUser.id,
       notebookId: notebookId,
@@ -35,7 +34,6 @@ function Note({ notebooks, notes }) {
     setTitle('');
     setContent('');
     setNotebookId(1);
-    setHasSubmitted(false);
   };
 
   useEffect(() => {
@@ -44,7 +42,11 @@ function Note({ notebooks, notes }) {
     if (title.length > 50) validationErrors.push("Your note name cannot be longer than 50 characters");
     if (content.length < 1) validationErrors.push("Your note must contain atleast 1 character")
     setErrors(validationErrors);
-  }, [title, content, notebookId]);
+  }, [title, content]);
+
+  useEffect(() => {
+    localStorage.getItem('note')
+  }, [])
 
   return (
     <div className='note-container'>
@@ -53,16 +55,13 @@ function Note({ notebooks, notes }) {
           onSubmit={submit}
         >
           <h1>I am Note component</h1>
-        {hasSubmitted && errors.length > 0 &&
+        { errors.length > 0 &&
         (<ul className='errors'>
           {errors.map(error => (
           <li key={error}>{error}</li>
            ))}
         </ul>)}
           <div className='note-title'>
-            <div className='note-edit'>
-              <button className='btn-blue'>Edit Note</button>
-            </div>
             <div className='select-notebook'>
               <p>choose notebook...</p>
               <select
@@ -100,15 +99,14 @@ function Note({ notebooks, notes }) {
           </div>
           <div className='note-actions'>
             <button className='btn' disabled={errors.length >0} type='submit'>Create</button>
-            <button className='btn-red'>Delete</button>
           </div>
         </form>
         <div className='note-preview'>
           <div className='note-preview-title'>
-            preview title
+            title
           </div>
           <div className='note-preview-body'>
-            preview body
+            body
           </div>
         </div>
       </div>

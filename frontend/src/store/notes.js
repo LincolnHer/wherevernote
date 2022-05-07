@@ -95,6 +95,7 @@ export const editNote = (note, noteId) => async dispatch => {
 
 //DELETE delete a note
 export const deleteNote = (note) => async dispatch => {
+  console.log(note)
   const res = await csrfFetch(`/api/notes/note/${note.id}`, {
     method: 'DELETE'
   });
