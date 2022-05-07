@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux"
+import { useParams, useHistory } from "react-router-dom";
 import { useModal } from "../../context/ModalContext";
 import { editNote } from "../../store/notes";
 
 function EditNoteForm() {
   const { notebookId } = useParams();
+  const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state?.session.user);
   const notebooksObj = useSelector((state) => state?.notebooks);
   const notesObj = useSelector((state) => state?.notes);
@@ -13,13 +15,15 @@ function EditNoteForm() {
   const singleNote = notesObj[getNoteId]
   console.log('single note', singleNote)
 
-  const [oldTitle, setOldTitle] = useState();
-  const [oldContent, setOldContent] = useState("");
-  const [oldNotebook, setOldNotebook] = useState(notebookId);
 
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [notebook, setNotebook] = useState(notebookId);
+//   const [oldTitle, setOldTitle] = useState();
+//   const [oldContent, setOldContent] = useState("");
+//   const [oldNotebook, setOldNotebook] = useState(notebookId);
+
+  const [title, setTitle] = useState(singleNote?.title);
+  const [content, setContent] = useState(singleNote?.content);
+  const [notebook, setNotebook] = useState(singleNote?.notebookId);
+  const [hasSubmitted, setHasSubmitted] = useState(false)
 
   const [errors, setErrors] = useState([]);
   const notebooksArr = Object.values(notebooksObj);
@@ -28,20 +32,37 @@ function EditNoteForm() {
   const submit = async (e) => {
     e.preventDefault();
     setModal3IsOpenToFalse();
+    setHasSubmitted(true)
     const formValues = {
-      userId: sessionUser.id,
-      notebookId: title,
-      title: content,
-      content: notebook,
-    };
+        userId: sessionUser.id,
+        notebookId: notebook,
+        title: title,
+        content: content,
+      }
+
+    const editedNote = await dispatch(editNote(formValues, singleNote?.id))
+    history.push(`/notebooks/${notebook}`)
+    if (window.location.href === `http://localhost:3000/notebooks/${notebook}` || `https://wherevernote.herokuapp.com/notebooks/${notebook}`) return window.location.reload(false)
+
   };
+
+  useEffect(() => {
+
+  },[hasSubmitted])
+
+//   useEffect(() => {
+//     return
+//   },[title, content])
 
   return (
     <div className="notebook-modal">
       <header>
         <h1>Edit Note</h1>
       </header>
-      <form className="notebook-form" >
+      <form
+        className="notebook-form"
+        onSubmit={submit}
+      >
         <ul className="errors">
           {errors.map((error) => (
             <li key={error}>{error}</li>

@@ -25,7 +25,7 @@ function Notebook() {
   filteredNotes.reverse();
   const singleNotebook = useSelector(state => state.notebooks[notebookId])
   const { modalIsOpen2, setModalIsOpen2, setModal2IsOpenToTrue, setModal2IsOpenToFalse, modalName, setModalName } = useModal();
-  
+
   const customStyles = {
     content : {
       top: '50%',
@@ -43,7 +43,6 @@ function Notebook() {
     if (!sessionUser?.id) return
     dispatch(getNotebooks(sessionUser?.id))
     dispatch(getNotes(sessionUser?.id))
-
 
   }, [dispatch])
 

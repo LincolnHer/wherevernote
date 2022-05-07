@@ -57,7 +57,7 @@ function Note({ notebooks, notes }) {
         <form
           onSubmit={submit}
         >
-          <h1>I am Note component</h1>
+          <h1>Create A Note</h1>
         { errors.length > 0 &&
         (<ul className='errors'>
           {errors.map(error => (
