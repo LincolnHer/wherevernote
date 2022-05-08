@@ -11,3 +11,38 @@
     cursor: pointer;
     width: fit-content;
   }
+
+.auth-forms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /* margin-top: 10px; */
+}
+
+.container {
+  border: 1px solid ;
+  box-shadow: 0px 0px 6px 5px lightgrey;
+  height: 48vmax;
+  width: 600px;
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-note-title {
+  font-size: 50px;;
+}
+
+.inputs {
+  width: 400px;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.backgroundImg {
+  min-height: 100%;
+  min-width: 1024px;
+}

@@ -55,3 +55,17 @@ input {
 .errors {
   color: red;
 }
+
+.edit-note{
+  font-size: 30px;
+}
+
+.edit-note-body {
+  width: 400px;
+  height: 300px;
+  margin: 10px;
+}
+
+.edit-note-title {
+  width: 400px;
+}

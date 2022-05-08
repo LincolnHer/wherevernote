@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import BackgroundImage from '../../assets/5630974.jpg'
 import './LoginForm.css'
 
 function LoginFormPage() {
@@ -11,6 +12,13 @@ function LoginFormPage() {
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
+
+  const backgroundStyle = {
+    backgroundImage: `url(${BackgroundImage})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat'
+}
 
   if (sessionUser) return (
     <Redirect to="/home" />
@@ -31,31 +39,41 @@ function LoginFormPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Username or Email
-        <input
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit" className="btn">Log In</button>
-      <button onClick={demoUser} className="btn">Demo User</button>
-    </form>
+    <div className='backgroundImg' style={backgroundStyle}>
+      <form
+      className='auth-forms'
+      onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
+        <div className='container'>
+        <header>
+          <h1 className='auth-note-title'>Wherevernote</h1>
+        </header>
+          <h2>Remember your notes whenever, wherever</h2>
+          <input
+            className='inputs'
+            type="text"
+            value={credential}
+            onChange={(e) => setCredential(e.target.value)}
+            placeholder='Username or Email'
+            required
+          />
+          <input
+            className='inputs'
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder='Password'
+            required
+          />
+        <div>
+          <button type="submit" className="btn">Log In</button>
+          <button onClick={demoUser} className="btn">Demo User</button>
+        </div>
+        </div>
+      </form>
+    </div>
   );
 }
 

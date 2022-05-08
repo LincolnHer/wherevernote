@@ -23,9 +23,7 @@ function EditNoteForm() {
   const [content, setContent] = useState(singleNote?.content);
   const [notebook, setNotebook] = useState(singleNote?.notebookId);
   const [errors, setErrors] = useState([]);
-
-  const notebooksArr = Object.values(notebooksObj);
-  const { setModalIsOpen3, setModal3IsOpenToFalse } = useModal();
+  const { setModal3IsOpenToFalse } = useModal();
 
   const submit = async (e) => {
     e.preventDefault();
@@ -47,14 +45,15 @@ function EditNoteForm() {
     if (!title.length) validationErrors.push('Your note name must contain at least one character');
     if (title.length > 50) validationErrors.push("Your note name cannot be longer than 50 characters");
     if (content.length < 1) validationErrors.push("Your note must contain atleast 1 character")
-    if (!notebook) validationErrors.push('You must select a notebook')
     setErrors(validationErrors)
   }, [title, content]);
 
   return (
     <div className="notebook-modal">
       <header>
-        <h1>Edit Note</h1>
+        <h1
+          className="edit-note"
+        >Edit Note</h1>
       </header>
       <form
         className="notebook-form"
@@ -66,6 +65,7 @@ function EditNoteForm() {
           ))}
         </ul>
           <input
+            className="edit-note-title"
             type="text"
             name="title"
             value={title}
@@ -73,6 +73,7 @@ function EditNoteForm() {
             placeholder="Title"
           />
           <textarea
+              className="edit-note-body"
               name='content'
               value={content}
               onChange={(e) => setContent(e.target.value)}
