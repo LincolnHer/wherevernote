@@ -1,7 +1,46 @@
 .note-container {
 background-color: aqua;
 height: 100vh;
-width: 100vmax
+width: 100vmax;
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column;
+  width: 100vmax;
+  height: 100vmax;
+}
+
+.title-box {
+  width: 53% ;
+  border-radius: 25px;
+  padding-left: 5px;
+  font-size: x-large;
+}
+
+.note-body {
+  margin: 10px;
+}
+
+.note-content {
+  width: 53%;
+  height: 370px;
+  border-radius: 25px;
+  padding-left: 10px;
+  font-size: x-large;
+}
+
+.note-header {
+  font-size: 30px;
+  padding-left: 10px;
+}
+
+.select-dropdown {
+  width: fit-content;
+  margin-left: 30px;
+  height: 25px;
+  border-radius: 25px;
+  font-size: small;
 }
 
 .btn-red {

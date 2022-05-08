@@ -50,6 +50,7 @@ if (!sessionUser) {
   return <Redirect to="/" />
   }
 
+
   return (
     <>
     <div className="home-page-content">
@@ -74,7 +75,7 @@ if (!sessionUser) {
       </div>
       <div className='note-list-body'>
       {filteredNotes?.map(note => (
-          <NoteCard key={note?.id} note={note}/>
+          <NoteCard key={note?.id} note={note} />
         ))}
       </div>
     </div>

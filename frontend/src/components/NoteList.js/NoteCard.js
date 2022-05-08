@@ -7,6 +7,7 @@ import { deleteNote } from '../../store/notes'
 import EditNotebookModal from '../CreateNotebookModal/EditNotebookForm';
 
 function NoteCard({ note }) {
+
   const dispatch = useDispatch();
   const [noteId, setnoteId] = useState(note.id)
   const notes = useSelector(state => state.notes)

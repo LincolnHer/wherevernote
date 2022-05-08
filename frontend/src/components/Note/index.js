@@ -14,11 +14,13 @@ function Note({ notebooks, notes }) {
 
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+  let href = window.location.href
+  // console.log(href.slice(32))
   const [notebook, setNotebook] = useState(notebookId);
   // console.log(notebook)
+  // console.log('id' ,notebook)
   const [errors, setErrors] = useState([]);
   const notebooksArr = Object.values(notebooks)
-
 
   const submit = async (e) => {
     e.preventDefault();
@@ -30,13 +32,11 @@ function Note({ notebooks, notes }) {
       content: content,
     }
 
-    console.log(formValues)
-
     const note = await dispatch(createNote(formValues));
     history.push(`/notebooks/${notebook}`)
     setTitle('');
     setContent('');
-    setNotebook(notebookId);
+    setNotebook(notebook)
   };
 
   useEffect(() => {
@@ -48,16 +48,19 @@ function Note({ notebooks, notes }) {
     setErrors(validationErrors);
 
     return
-  }, [title, content]);
+  }, [title, content,notebook]);
 
 
   return (
     <div className='note-container'>
-      <div className='note-form'>
+      <div className='note-form-container'>
         <form
+          className='note-form'
           onSubmit={submit}
         >
-          <h1>Create A Note</h1>
+        <header>
+          <h1 className='note-header'>Create A Note</h1>
+        </header>
         { errors.length > 0 &&
         (<ul className='errors'>
           {errors.map(error => (
@@ -67,6 +70,7 @@ function Note({ notebooks, notes }) {
           <div className='note-title'>
             <div className='select-notebook'>
               <select
+                className='select-dropdown'
                 name="notebookId"
                 onChange={(e) => setNotebook(e.target.value)}
                 value={notebookId}
@@ -80,6 +84,7 @@ function Note({ notebooks, notes }) {
               </select>
             </div>
             <input
+             className='title-box'
               type='text'
               name='title'
               value={title}
@@ -90,6 +95,7 @@ function Note({ notebooks, notes }) {
           </div>
           <div className='note-body'>
             <textarea
+              className='note-content'
               name='content'
               value={content}
               onChange={(e) => setContent(e.target.value)}

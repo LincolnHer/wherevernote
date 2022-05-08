@@ -14,8 +14,6 @@ function EditNoteForm() {
   const notesObj = useSelector((state) => state?.notes);
   const getNoteId = localStorage.getItem('note')
   const singleNote = notesObj[getNoteId]
-//   console.log('single note', singleNote)
-
 
 //   const [oldTitle, setOldTitle] = useState();
 //   const [oldContent, setOldContent] = useState("");
@@ -41,7 +39,7 @@ function EditNoteForm() {
 
     const editedNote = await dispatch(editNote(formValues, singleNote?.id))
     history.push(`/notebooks/${notebook}`)
-    // if (window.location.href === `http://localhost:3000/notebooks/${notebook}` || `https://wherevernote.herokuapp.com/notebooks/${notebook}`) return window.location.reload(false)
+    if (window.location.href === `http://localhost:3000/notebooks/${notebook}` || `https://wherevernote.herokuapp.com/notebooks/${notebook}`) return window.location.reload(false)
   };
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, useParams } from "react-router-dom"
 import { useModal } from "../../context/ModalContext"
 import Modal from 'react-modal'
 import CreateNotebookModal from "../CreateNotebookModal"
@@ -9,6 +9,7 @@ import './Sidebar.css'
 Modal.setAppElement('#root');
 
 function NavNotebook({ notebooks }) {
+  // const { notebookId } = useParams();
   const notebooksArr = Object.values(notebooks)
   const { modalIsOpen1, setModalIsOpen1, setModal1IsOpenToTrue, setModal1IsOpenToFalse, modalName, setModalName } = useModal();
   const customStyles = {
@@ -27,7 +28,7 @@ function NavNotebook({ notebooks }) {
 //   console.log(notebooksArr)
 
 useEffect(() => {
-  
+
 }, [modalIsOpen1])
 
   return (
