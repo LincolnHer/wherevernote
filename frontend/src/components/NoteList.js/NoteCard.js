@@ -35,6 +35,8 @@ function NoteCard({ note }) {
     return
   }, [noteId])
 
+
+
 return (
   <>
   <div className="note-card" onClick={ () => { setnoteId(note?.id); localStorage.setItem('note', note?.id) } }>

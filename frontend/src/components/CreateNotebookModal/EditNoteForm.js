@@ -5,6 +5,7 @@ import { useModal } from "../../context/ModalContext";
 import { editNote } from "../../store/notes";
 
 function EditNoteForm() {
+
   const { notebookId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -13,7 +14,7 @@ function EditNoteForm() {
   const notesObj = useSelector((state) => state?.notes);
   const getNoteId = localStorage.getItem('note')
   const singleNote = notesObj[getNoteId]
-  console.log('single note', singleNote)
+//   console.log('single note', singleNote)
 
 
 //   const [oldTitle, setOldTitle] = useState();
@@ -23,16 +24,14 @@ function EditNoteForm() {
   const [title, setTitle] = useState(singleNote?.title);
   const [content, setContent] = useState(singleNote?.content);
   const [notebook, setNotebook] = useState(singleNote?.notebookId);
-  const [hasSubmitted, setHasSubmitted] = useState(false)
-
   const [errors, setErrors] = useState([]);
+
   const notebooksArr = Object.values(notebooksObj);
   const { setModalIsOpen3, setModal3IsOpenToFalse } = useModal();
 
   const submit = async (e) => {
     e.preventDefault();
     setModal3IsOpenToFalse();
-    setHasSubmitted(true)
     const formValues = {
         userId: sessionUser.id,
         notebookId: notebook,
@@ -42,17 +41,17 @@ function EditNoteForm() {
 
     const editedNote = await dispatch(editNote(formValues, singleNote?.id))
     history.push(`/notebooks/${notebook}`)
-    if (window.location.href === `http://localhost:3000/notebooks/${notebook}` || `https://wherevernote.herokuapp.com/notebooks/${notebook}`) return window.location.reload(false)
-
+    // if (window.location.href === `http://localhost:3000/notebooks/${notebook}` || `https://wherevernote.herokuapp.com/notebooks/${notebook}`) return window.location.reload(false)
   };
 
   useEffect(() => {
-
-  },[hasSubmitted])
-
-//   useEffect(() => {
-//     return
-//   },[title, content])
+    const validationErrors = [];
+    if (!title.length) validationErrors.push('Your note name must contain at least one character');
+    if (title.length > 50) validationErrors.push("Your note name cannot be longer than 50 characters");
+    if (content.length < 1) validationErrors.push("Your note must contain atleast 1 character")
+    if (!notebook) validationErrors.push('You must select a notebook')
+    setErrors(validationErrors)
+  }, [title, content]);
 
   return (
     <div className="notebook-modal">
@@ -90,7 +89,11 @@ function EditNoteForm() {
           >
             Cancel
           </button>
-          <button type="submit" className="btn" disabled={errors.length > 0}>
+          <button
+            type="submit"
+            className="btn"
+            disabled={errors.length > 0}
+          >
             Save Change
           </button>
         </div>

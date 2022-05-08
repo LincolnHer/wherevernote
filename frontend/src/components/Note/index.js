@@ -48,8 +48,8 @@ function Note({ notebooks, notes }) {
     setErrors(validationErrors);
 
     return
-
   }, [title, content]);
+
 
   return (
     <div className='note-container'>

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 import { useModal } from "../../context/ModalContext"
 import Modal from 'react-modal'
@@ -25,6 +25,10 @@ function NavNotebook({ notebooks }) {
 };
 
 //   console.log(notebooksArr)
+
+useEffect(() => {
+  
+}, [modalIsOpen1])
 
   return (
     <>
