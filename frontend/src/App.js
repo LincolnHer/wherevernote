@@ -38,7 +38,7 @@ function App() {
             <Notebook />
           </Route>
           <Route>
-            <p>Page Not Found</p>
+            <h1 className="not-found">Page Not Found</h1>
           </Route>
         </Switch>
       )}
