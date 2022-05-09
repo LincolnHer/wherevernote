@@ -27,8 +27,6 @@ function NavNotebook({ notebooks }) {
     },
   };
 
-  useEffect(() => {}, [modalIsOpen1]);
-
   return (
     <>
       <ul>
