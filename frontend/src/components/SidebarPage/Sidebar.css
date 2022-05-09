@@ -5,6 +5,8 @@
   flex-direction: column;
   color: white;
   height: 100%;
+  padding: 10px;
+
 }
 
 .btn-red {

@@ -5,6 +5,8 @@ justify-content: space-between;
 align-items: center;
 height: 6vh;
 width: 100vmax;
+border: solid;
+border-color: #00A82D;
 }
 
 .profile-dropdown {
@@ -13,7 +15,7 @@ width: 100vmax;
 }
 
 .btn {
-  background-color: #00A82D; 
+  background-color: #00A82D;
   border: none;
   color: white;
   padding: 15px 32px;

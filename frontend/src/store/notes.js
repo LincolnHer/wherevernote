@@ -74,14 +74,15 @@ export const createNote = (note) => async dispatch => {
   })
 
   if (res.ok) {
-    const newNote = await res.json();
+    const newNote = await res.json()
+
     dispatch(postNote(newNote));
   }
 };
 
 //PUT edit a note
 export const editNote = (note, noteId) => async dispatch => {
-  const res = await csrfFetch(`/api/notebooks/notebook/${noteId}`, {
+  const res = await csrfFetch(`/api/notes/note/${noteId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(note)
@@ -89,13 +90,13 @@ export const editNote = (note, noteId) => async dispatch => {
 
   if (res.ok) {
     const updatedNote = await res.json();
+
     dispatch(putNote(updatedNote))
   }
 }
 
 //DELETE delete a note
 export const deleteNote = (note) => async dispatch => {
-  console.log(note)
   const res = await csrfFetch(`/api/notes/note/${note.id}`, {
     method: 'DELETE'
   });
@@ -126,6 +127,10 @@ export default function notesReducer (state = initialState, action) {
     case DELETE_NOTE:
       newState = { ...state };
       delete newState[action.payload.id]
+      return newState
+    case PUT_NOTE:
+      newState = { ...state }
+      newState[action.payload.id] = action.payload
       return newState
     default:
       return state

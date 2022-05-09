@@ -1,36 +1,37 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { getNotebooks } from "../../store/notebook";
 import { getNotes } from "../../store/notes";
 import Note from "../Note";
 import NoteList from "../NoteList.js";
 import Sidebar from "../SidebarPage";
-import './HomePage.css'
+import "./HomePage.css";
 
 function HomePage() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
-  const notebooksObj = useSelector(state => state?.notebooks)
-  const notesObj = useSelector(state => state?.notes)
-  // console.log('notebook normalized state', notebooksObj)
+  const sessionUser = useSelector((state) => state.session.user);
+  const notebooksObj = useSelector((state) => state?.notebooks);
+  const notesObj = useSelector((state) => state?.notes);
+
 
   useEffect(() => {
-    dispatch(getNotebooks(sessionUser?.id))
-    dispatch(getNotes(sessionUser?.id))
+    if (!sessionUser?.id) return;
+    dispatch(getNotebooks(sessionUser?.id));
+    dispatch(getNotes(sessionUser?.id));
   }, [dispatch]);
 
   if (!sessionUser) {
-    return <Redirect to="/" />
-   }
+    return <Redirect to="/" />;
+  }
 
   return (
     <div className="home-page-content">
-      <Sidebar notebooks={notebooksObj} notes={notesObj}/>
-      <NoteList notes={notesObj}/>
+      <Sidebar notebooks={notebooksObj} notes={notesObj} />
+      <NoteList notebooks={notebooksObj} notes={notesObj} />
       <Note notebooks={notebooksObj} notes={notesObj} />
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;

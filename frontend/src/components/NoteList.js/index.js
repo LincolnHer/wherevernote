@@ -1,13 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useParams } from 'react-router-dom';
-// import { useModal } from '../../context/ModalContext';
 import NoteCard from './NoteCard';
 import './NoteList.css'
 
 function NoteList({ notes }) {
-  const sessionUser = useSelector(state => state.session.user)
+
   const notesArr = Object.values(notes);
   notesArr.reverse();
 
@@ -26,7 +22,7 @@ function NoteList({ notes }) {
       </div>
       <div className='note-list-body'>
         {notesArr?.map(note => (
-          <NoteCard key={note?.id} note={note}/>
+          <NoteCard key={note?.id} note={note} />
         ))}
       </div>
     </div>

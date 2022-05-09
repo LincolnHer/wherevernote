@@ -109,7 +109,6 @@ export default function notebooksReducer (state = initialState, action) {
   let newState;
   switch (action.type) {
     case GET_NOTEBOOKS:
-      // console.log('payload', action.payload)
       newState = {};
       action.payload.forEach(notebook => {
        newState[notebook.id] = notebook
