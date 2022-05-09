@@ -82,7 +82,6 @@ export const createNote = (note) => async dispatch => {
 
 //PUT edit a note
 export const editNote = (note, noteId) => async dispatch => {
-  console.log('edit', note)
   const res = await csrfFetch(`/api/notes/note/${noteId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -98,7 +97,6 @@ export const editNote = (note, noteId) => async dispatch => {
 
 //DELETE delete a note
 export const deleteNote = (note) => async dispatch => {
-  // console.log(note)
   const res = await csrfFetch(`/api/notes/note/${note.id}`, {
     method: 'DELETE'
   });

@@ -13,9 +13,9 @@ function SplashPage() {
     <>
     <div className="body">
       <div className="content">
-        <div className="value">
-          <h1>Organize your work whenever, wherever</h1>
-          <h5>Remember everything and tackle any project with your notes and tasks all in one place. </h5>
+        <div className="splash-header">
+          <p className="splash-title">Organize your work whenever, wherever</p>
+          <p className="splash-sub-title">Remember everything and tackle any project with your notes and tasks all in one place. </p>
           <button className="btn">
             <NavLink to='/signup' style={{textDecoration: 'none', color: 'white'} }>Sign up for free</NavLink>
           </button>

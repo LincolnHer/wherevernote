@@ -64,7 +64,6 @@ router.put('/note/:noteId', asyncHandler(async(req, res) => {
 router.delete('/note/:noteId', asyncHandler(async(req, res) => {
   const noteId = req.params.noteId
   const note = await Note.findByPk(noteId);
-  await note.destroy()
 
   return res.json(note);
 }))

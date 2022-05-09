@@ -14,3 +14,15 @@ a:hover {
 .nav {
   display: block;
 }
+
+.splash-title {
+  font-size: 40px;
+}
+
+.splash-sub-title {
+  font-size: 25;
+}
+
+.splash-header {
+  padding-left: 10px;
+}
