@@ -12,11 +12,19 @@ function Note({ notebooks }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
+  // const notebookKey = Object.keys(notebooks)
+  // const notebookVal = Object.values(notebooks)
+  // console.log('key', notebookKey)
+  // console.log('val', notebookVal)
+//   const Id = notebookKey.filter(id => id === notebookId )
+//  console.log('filtered', Id.toString())
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const [notebook, setNotebook] = useState(notebookId);
+  const [notebook, setNotebook] = useState(1);
+
+  console.log(notebook)
   const [errors, setErrors] = useState([]);
   const notebooksArr = Object.values(notebooks);
 
@@ -32,6 +40,7 @@ function Note({ notebooks }) {
   const submit = async (e) => {
     e.preventDefault();
 
+    let apiSubscribed = true
     const formValues = {
       userId: sessionUser.id,
       notebookId: notebook,
@@ -43,7 +52,7 @@ function Note({ notebooks }) {
     history.push(`/notebooks/${notebook}`);
     setTitle("");
     setContent("");
-    setNotebook(notebook);
+    setNotebook(notebookId)
   };
 
   useEffect(() => {
@@ -61,8 +70,13 @@ function Note({ notebooks }) {
     if (!notebook) validationErrors.push("You must select a notebook");
     setErrors(validationErrors);
 
-    return;
-  }, [title, content, notebook]);
+    return () => {
+
+  }
+  }, [title, content]);
+
+
+
 
   return (
     <div className="note-container" style={backgroundStyle}>

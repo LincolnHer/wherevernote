@@ -50,6 +50,7 @@ function EditNoteForm() {
     if (content.length < 1)
       validationErrors.push("Your note must contain atleast 1 character");
     setErrors(validationErrors);
+    return
   }, [title, content]);
 
   return (

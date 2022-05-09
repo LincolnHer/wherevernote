@@ -41,6 +41,7 @@ function CreateNotebookModal() {
     if (notebookTitles.includes(title))
       validationErrors.push(`Notebook name '${title}' is already in use`);
     setErrors(validationErrors);
+    return
   }, [title]);
 
   return (

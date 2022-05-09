@@ -44,9 +44,17 @@ function Notebook() {
 
   useEffect(() => {
     if (!sessionUser?.id) return;
+    let apiSubscribed = true
     dispatch(getNotebooks(sessionUser?.id));
     dispatch(getNotes(sessionUser?.id));
+
+    return () => apiSubscribed = false
+  return
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   return () => 'cleanup'
+  // },[])
 
   if (!sessionUser) {
     return <Redirect to="/" />;

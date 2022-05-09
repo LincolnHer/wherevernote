@@ -25,7 +25,7 @@ li.nav-links:hover {
   list-style-type: none;
 } */
 
-li.nav-links.new{
+.nav-links.new{
   color: #00A82D;
 }
 

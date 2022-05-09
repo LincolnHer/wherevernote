@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useModal } from "../../context/ModalContext";
 import Modal from "react-modal";
 import CreateNotebookModal from "../CreateNotebookModal";
@@ -8,7 +7,11 @@ import "./Sidebar.css";
 Modal.setAppElement("#root");
 
 function NavNotebook({ notebooks }) {
+  const { notebookId } = useParams();
   const notebooksArr = Object.values(notebooks);
+  // const handleClick = () => {
+  //   localStorage.setItem('notebook', notebookId)
+  // }
   const {
     modalIsOpen1,
     setModalIsOpen1,
@@ -33,23 +36,27 @@ function NavNotebook({ notebooks }) {
         <div>
           {notebooksArr?.length > 0 &&
             notebooksArr?.map((notebook) => (
-              <li key={notebook.id} className="nav-links">
+              <li
+              key={notebook.id}
+              className="nav-links"
+              >
                 <NavLink
                   to={`/notebooks/${notebook.id}`}
                   style={{ color: "white", textDecoration: "none" }}
+                  // onClick={() => handleClick()}
                 >
                   {notebook.title}
                 </NavLink>
               </li>
             ))}
-          <li
-            className="nav-links new"
-            onClick={() => {
-              setModalIsOpen1(true);
-            }}
-          >
-            New Notebook
-          </li>
+            <li
+              className="nav-links new"
+              onClick={() => {
+                setModalIsOpen1(true);
+              }}
+            >
+              New Notebook
+            </li>
         </div>
       </ul>
       <Modal isOpen={modalIsOpen1} style={customStyles}>

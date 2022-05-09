@@ -19,6 +19,10 @@ function HomePage() {
     if (!sessionUser?.id) return;
     dispatch(getNotebooks(sessionUser?.id));
     dispatch(getNotes(sessionUser?.id));
+
+    return () => {
+
+    }
   }, [dispatch]);
 
   if (!sessionUser) {

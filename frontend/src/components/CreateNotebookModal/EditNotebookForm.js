@@ -32,6 +32,7 @@ function EditNotebookModal() {
         "Your notebook name cannot be longer than 50 characters"
       );
     setErrors(validationErrors);
+    return
   }, [title]);
 
   return (

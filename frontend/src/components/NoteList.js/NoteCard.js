@@ -34,9 +34,9 @@ function NoteCard({ note }) {
     const oldNote = await dispatch(deleteNote(singleNote));
   };
 
-  useEffect(() => {
-    return;
-  }, [noteId]);
+  // useEffect(() => {
+  //   return;
+  // }, [noteId]);
 
   return (
     <>
