@@ -82,6 +82,7 @@ export const createNote = (note) => async dispatch => {
 
 //PUT edit a note
 export const editNote = (note, noteId) => async dispatch => {
+  // console.log(note)
   const res = await csrfFetch(`/api/notes/note/${noteId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -90,8 +91,10 @@ export const editNote = (note, noteId) => async dispatch => {
 
   if (res.ok) {
     const updatedNote = await res.json();
-    // console.log('thunk edit', updatedNote)
-    dispatch(putNote(note))
+
+    console.log('updated note', updatedNote)
+
+    dispatch(putNote(updatedNote))
   }
 }
 
@@ -129,7 +132,9 @@ export default function notesReducer (state = initialState, action) {
       delete newState[action.payload.id]
       return newState
     case PUT_NOTE:
-      newState = { ...state, [action.payload.id]: action.payload }
+      newState = { ...state }
+      newState[action.payload.id] = action.payload
+      return newState
     default:
       return state
   }

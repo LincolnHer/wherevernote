@@ -37,7 +37,7 @@ function EditNoteForm() {
 
     const editedNote = await dispatch(editNote(formValues, singleNote?.id))
     history.push(`/notebooks/${notebook}`)
-    if (window.location.href === `http://localhost:3000/notebooks/${notebook}` || `https://wherevernote.herokuapp.com/notebooks/${notebook}`) return window.location.reload(false)
+    // if (window.location.href === `http://localhost:3000/notebooks/${notebook}` || `https://wherevernote.herokuapp.com/notebooks/${notebook}`) return window.location.reload(false)
   };
 
   useEffect(() => {
