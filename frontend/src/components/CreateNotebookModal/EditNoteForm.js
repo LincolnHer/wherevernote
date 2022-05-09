@@ -91,12 +91,12 @@ function EditNoteForm() {
           </button>
         </div>
         <div className="note-preview">
-          <h1>Note Preview</h1>
+          <h1 className="preview">Note Preview</h1>
           <div className="note-title">
-            <h2>{singleNote?.title}</h2>
+            <h2 className="single-note-title">Title: {singleNote?.title}</h2>
           </div>
           <div className="note-body">
-            <h3>{singleNote?.content}</h3>
+            <h3 className="single-note-content">Content: {singleNote?.content}</h3>
           </div>
         </div>
       </form>

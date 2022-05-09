@@ -74,3 +74,15 @@ input {
 .edit-notebook-title {
   font-size: 50px;
 }
+
+.preview {
+  font-size: 28pt;
+}
+
+.single-note-title {
+  font-size: 20pt;
+}
+
+.single-note-content {
+ font-size: 15pt;
+}
