@@ -44,6 +44,9 @@ function Note({ notebooks }) {
     setTitle("");
     setContent("");
     setNotebook(notebook);
+    return () => {
+
+    }
   };
 
   useEffect(() => {
