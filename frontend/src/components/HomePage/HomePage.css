@@ -8,9 +8,10 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 
 .home-page-content {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
-    height: 100vh;
+    height: 64vmax;
+    /* height: 100vmax; */
     width: fit-content;
     /* background-color: aquamarine; */
 }

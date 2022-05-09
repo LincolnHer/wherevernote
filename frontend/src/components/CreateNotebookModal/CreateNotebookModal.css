@@ -54,6 +54,7 @@ input {
 
 .errors {
   color: red;
+  font-weight: bold;
 }
 
 .edit-note{
@@ -68,4 +69,8 @@ input {
 
 .edit-note-title {
   width: 400px;
+}
+
+.edit-notebook-title {
+  font-size: 50px;
 }

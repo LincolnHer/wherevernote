@@ -75,14 +75,13 @@ export const createNote = (note) => async dispatch => {
 
   if (res.ok) {
     const newNote = await res.json()
-    console.log(newNote)
+
     dispatch(postNote(newNote));
   }
 };
 
 //PUT edit a note
 export const editNote = (note, noteId) => async dispatch => {
-  // console.log(note)
   const res = await csrfFetch(`/api/notes/note/${noteId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -91,8 +90,6 @@ export const editNote = (note, noteId) => async dispatch => {
 
   if (res.ok) {
     const updatedNote = await res.json();
-
-    console.log('updated note', updatedNote)
 
     dispatch(putNote(updatedNote))
   }

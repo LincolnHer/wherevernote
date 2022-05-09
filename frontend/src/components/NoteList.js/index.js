@@ -1,14 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useParams } from 'react-router-dom';
-// import { useModal } from '../../context/ModalContext';
 import NoteCard from './NoteCard';
 import './NoteList.css'
 
-function NoteList({ notebooks, notes }) {
-  const sessionUser = useSelector(state => state.session.user)
+function NoteList({ notes }) {
+
   const notesArr = Object.values(notes);
   notesArr.reverse();
 

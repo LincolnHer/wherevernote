@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import BackgroundImage from '../../assets/5630974.jpg'
-import './SignupForm.css'
+import BackgroundImage from "../../assets/5630974.jpg";
+import "./SignupForm.css";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -16,11 +16,11 @@ function SignupFormPage() {
   const [errors, setErrors] = useState([]);
 
   const backgroundStyle = {
-      backgroundImage: `url(${BackgroundImage})`,
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat'
-  }
+    backgroundImage: `url(${BackgroundImage})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  };
 
   if (sessionUser) return <Redirect to="/home" />;
 
@@ -28,27 +28,29 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+      return dispatch(
+        sessionActions.signup({ email, username, password })
+      ).catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    return setErrors([
+      "Confirm Password field must be the same as the Password field",
+    ]);
   };
 
   return (
-    <div className="backgroundImg" style={backgroundStyle}>
-      <form
-        onSubmit={handleSubmit}
-        className='auth-forms'
-        >
-        <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
+    <div className="backgroundImg-auth" style={backgroundStyle}>
+      <form onSubmit={handleSubmit} className="auth-forms">
         <div className="container">
+        <ul className="errors">
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
           <header>
-            <h1 className='auth-note-title'>Wherevernote</h1>
+            <h1 className="auth-note-title">Wherevernote</h1>
           </header>
           <h2>Remember your notes whenever, wherever</h2>
           <input
@@ -56,7 +58,7 @@ function SignupFormPage() {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder='Email'
+            placeholder="Email"
             required
           />
           <input
@@ -64,7 +66,7 @@ function SignupFormPage() {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder='Username'
+            placeholder="Username"
             required
           />
           <input
@@ -72,18 +74,20 @@ function SignupFormPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder='Password'
+            placeholder="Password"
             required
           />
           <input
             className="inputs"
-            type="assword"
+            type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder='Confirm Password'
+            placeholder="Confirm Password"
             required
           />
-        <button type="submit" className="btn">Sign Up</button>
+          <button type="submit" className="btn">
+            Sign Up
+          </button>
         </div>
       </form>
     </div>
