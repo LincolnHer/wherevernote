@@ -1,15 +1,18 @@
 .note-form {
   display: flex;
   flex-direction: column;
-  width: 100vmax;
+  width: 800px;
   height: 100vmax;
 }
 
 .title-box {
-  width: 53% ;
-  border-radius: 25px;
-  padding-left: 5px;
+  width: 100% ;
+  /* border-radius: 25px;
+  padding-left: 5px; */
   font-size: x-large;
+  padding: 0;
+  margin: 0;
+  /* border: none; */
 }
 
 .note-body {
@@ -27,6 +30,7 @@
 .note-header {
   font-size: 30px;
   padding-left: 10px;
+  margin: 20px 0 20px 0;
 }
 
 .select-dropdown {
@@ -63,4 +67,15 @@ font-size: 16px;
 margin-left: 4px;
 cursor: pointer;
 width: fit-content;
+}
+
+.note-actions {
+  margin-top: 5px;
+}
+
+.editor {
+  /* text-align: center; */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -51,11 +51,11 @@ router.post('/', asyncHandler(async(req, res) => {
 //PUT edit a note
 router.put('/note/:noteId', asyncHandler(async(req, res) => {
   const noteId = req.params.noteId
-  const { title, content, notebookId } = req.body
+  const { title, content } = req.body
 
   const note = await Note.findByPk(noteId);
 
-  const newNote = await note.update({ title: title, content: content, notebookId: notebookId })
+  const newNote = await note.update({ title: title, content: content })
 
   return res.json(newNote)
 }))

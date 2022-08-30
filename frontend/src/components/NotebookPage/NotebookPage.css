@@ -25,6 +25,19 @@
   cursor: pointer;
 }
 
+.btn-green {
+  background-color: #00A82D;
+  border: none;
+  color: white;
+  padding: 3px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 .btn-blue:hover {
  background-color: rgba(0,107,166, .8);
 }

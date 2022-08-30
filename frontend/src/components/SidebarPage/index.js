@@ -11,14 +11,28 @@ function Sidebar({ notebooks, notes }) {
   // Create notebooks nav input
   return (
     <div className="sidebar">
-      <ul>
+      <ul className="notebooks">
         <li className="nav-links">
-          <NavLink
-            style={{ color: "white", textDecoration: "none" }}
-            to="/home"
-          >
-            Home
-          </NavLink>
+          <div className="i-link">
+            <div className="link-icon">
+              <i className="fa-solid fa-house" />
+            </div>
+            <NavLink
+              style={{
+                color: "white",
+                textDecoration: "none",
+                fontSize: "14px",
+                display: "flex",
+                alignItems: "center",
+                width: "203px"
+              }}
+              activeStyle={{ fontWeight: "bold" }}
+              activeClassName="nav-note-active"
+              to="/home"
+            >
+              Home
+            </NavLink>
+          </div>
         </li>
         <li
           onClick={() => {
@@ -27,7 +41,12 @@ function Sidebar({ notebooks, notes }) {
           }}
           className="nav-links"
         >
-          Notebooks
+          <div className="i-link">
+            <div className="link-icon">
+              <i className="fa-solid fa-book" />
+            </div>
+              <p className="link-text">Notebooks</p>
+          </div>
         </li>
         {showNotebooks && <NavNotebook notebooks={notebooks} notes={notes} />}
       </ul>

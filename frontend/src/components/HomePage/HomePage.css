@@ -26,7 +26,10 @@ li.nav-links:hover {
 } */
 
 li.nav-links.new{
+  display: flex;
+  padding-left: 43px;
   color: #00A82D;
+  font-size: 14px;
 }
 
 .Notebook-container {
