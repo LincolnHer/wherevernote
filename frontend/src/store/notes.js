@@ -51,7 +51,7 @@ export const getNotes = (userId) => async dispatch => {
 
   if (res.ok) {
     const allNotes = await res.json();
-    dispatch(getUserNotes(allNotes));
+  return dispatch(getUserNotes(allNotes));
   }
 };
 
@@ -61,7 +61,7 @@ export const getSingleNote = (noteId) => async dispatch => {
 
   if (res.ok) {
     const singleNote = await res.json();
-    dispatch(getNote(singleNote));
+  return dispatch(getNote(singleNote));
   }
 }
 
@@ -76,7 +76,7 @@ export const createNote = (note) => async dispatch => {
   if (res.ok) {
     const newNote = await res.json()
 
-    dispatch(postNote(newNote));
+  return dispatch(postNote(newNote));
   }
 };
 
@@ -91,7 +91,7 @@ export const editNote = (note, noteId) => async dispatch => {
   if (res.ok) {
     const updatedNote = await res.json();
 
-    dispatch(putNote(updatedNote))
+  return dispatch(putNote(updatedNote))
   }
 }
 
@@ -103,7 +103,7 @@ export const deleteNote = (note) => async dispatch => {
 
   if (res.ok) {
     const oldNote = await res.json();
-    dispatch(removeNote(note));
+  return dispatch(removeNote(note));
   }
 }
 

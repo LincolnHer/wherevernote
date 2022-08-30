@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NoteCard from './NoteCard';
 import './NoteList.css'
 
 function NoteList({ notes }) {
-
+  const [selectedNoteId, setSelectedNoteId] = useState('')
   const notesArr = Object.values(notes);
   notesArr.reverse();
 
@@ -22,7 +22,7 @@ function NoteList({ notes }) {
       </div>
       <div className='note-list-body'>
         {notesArr?.map(note => (
-          <NoteCard key={note?.id} note={note} />
+          <NoteCard key={note?.id} note={note} setSelectedNoteId={setSelectedNoteId} />
         ))}
       </div>
     </div>

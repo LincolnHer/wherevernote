@@ -30,16 +30,16 @@ function CreateNotebookModal() {
 
   useEffect(() => {
     const validationErrors = [];
-    if (!title.length)
+    if (!title?.length)
       validationErrors.push(
         "Your notebook name must contain at least one character"
       );
-    if (title.length > 50)
+    if (title?.length > 50)
       validationErrors.push(
         "Your notebook name cannot be longer than 50 characters"
       );
-    if (notebookTitles.includes(title))
-      validationErrors.push(`Notebook name '${title}' is already in use`);
+    if (notebookTitles?.includes(title))
+      validationErrors?.push(`Notebook name '${title}' is already in use`);
     setErrors(validationErrors);
   }, [title]);
 
@@ -59,15 +59,16 @@ function CreateNotebookModal() {
           ))}
         </ul>
         <label>
-          Name
-          <input
-            type="text"
-            name="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Notebook name"
-          />
-        </label>
+        Name
+        <input
+          className="edit-note-title"
+          type="text"
+          name="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Notebook Name"
+        />
+      </label>
         <div className="modal-btns">
           <button
             type="button"

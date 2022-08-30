@@ -1,5 +1,6 @@
 .login-cta {
  color: black;
+ margin: 16px 0 16px 0;
 }
 
 a {
@@ -17,10 +18,12 @@ a:hover {
 
 .splash-title {
   font-size: 40px;
+  margin: 40px 0 40px 0;
 }
 
 .splash-sub-title {
   font-size: 25;
+  margin: 16px 0 16px 0;
 }
 
 .splash-header {
@@ -28,6 +31,8 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: auto;
+  height: 639px;
 }
 
 .home-preview {
@@ -36,10 +41,51 @@ a:hover {
   background: #313031;
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .backgroundImg {
   height: 400px;
   width: 700px;
   margin: 10px;
+}
+
+#root {
+  /* margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden; */
+}
+
+.splash-create-link-icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 132px;
+  height: 72px;
+}
+
+.splash-links.footer {
+  /* border-top: 1px  solid #F5F5F5; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  /* background-color: gray; */
+  border-top: 2px solid  black;
+}
+
+@media only screen and (min-height: 764px) {
+  .splash-header {
+    height: 800px;
+  }
+}
+
+@media only screen and (max-height: 763px) {
+  .splash-header {
+    height: 639px;
+  }
 }

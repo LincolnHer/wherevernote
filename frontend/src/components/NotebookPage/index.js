@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import Modal from "react-modal";
@@ -7,13 +7,16 @@ import { getNotes } from "../../store/notes";
 import { useModal } from "../../context/ModalContext";
 import Sidebar from "../SidebarPage";
 import EditNotebookModal from "../CreateNotebookModal/EditNotebookForm";
-import Note from "../Note";
+import Note from "../Note/index";
+import EditNote from "../Note/EditNote";
 import NoteCard from "../NoteList.js/NoteCard";
 import "./NotebookPage.css";
 
 function Notebook() {
   const dispatch = useDispatch();
   const { notebookId } = useParams();
+  const [selectedNoteId, setSelectedNoteId] = useState(localStorage.getItem("note"))
+  // console.log("NOTEBOOK COMPONENT", selectedNoteId)
   const sessionUser = useSelector((state) => state.session.user);
   const notebooksObj = useSelector((state) => state?.notebooks);
   const notesObj = useSelector((state) => state?.notes);
@@ -44,17 +47,15 @@ function Notebook() {
 
   useEffect(() => {
     if (!sessionUser?.id) return;
-    let apiSubscribed = true
     dispatch(getNotebooks(sessionUser?.id));
     dispatch(getNotes(sessionUser?.id));
-
-    return () => apiSubscribed = false
-  return
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   return () => 'cleanup'
-  // },[])
+
+  const resetId = (e) => {
+    e.preventDefault();
+    setSelectedNoteId("")
+  }
 
   if (!sessionUser) {
     return <Redirect to="/" />;
@@ -79,16 +80,25 @@ function Notebook() {
                 >
                   Edit Notebook
                 </button>
+                <button className="btn-green"
+                  onClick={resetId}
+                >
+                  New Note
+                </button>
               </div>
             </div>
           </div>
           <div className="note-list-body">
             {filteredNotes?.map((note) => (
-              <NoteCard key={note?.id} note={note} />
+              <NoteCard key={note?.id} note={note} selectedNoteId={selectedNoteId} setSelectedNoteId={setSelectedNoteId}/>
             ))}
           </div>
         </div>
-        <Note notebooks={notebooksObj} notes={notesObj} />
+        {selectedNoteId ? (
+          <EditNote notebooks={notebooksObj} notes={notesObj} selectedNoteId={selectedNoteId} setSelectedNoteId={setSelectedNoteId}/>
+        ) : (
+          <Note notebooks={notebooksObj} notes={notesObj} selectedNoteId={selectedNoteId} />
+        )}
       </div>
       <Modal isOpen={modalIsOpen2} style={customStyles}>
         <button onClick={setModal2IsOpenToFalse} className="btn-red">

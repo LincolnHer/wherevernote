@@ -17,6 +17,7 @@
   height: 100px;
   box-sizing: border-box;
   border-bottom: 1px solid #d3d3d3;
+  background-color: rgb(240,240,240);
 }
 
 .note-list-title {
@@ -27,7 +28,10 @@
 .note-h1 {
   margin: 15px 0 20px;
   font-weight: 500;
-  font-size: 20px
+  font-size: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
  }
 
 .note-list-sub-header {
@@ -39,6 +43,8 @@
 .note-list-body {
   flex: 1;
   overflow: auto;
+  width: 380px;
+  background: rgb(240,240,240);
 }
 
 .note-card {
@@ -49,6 +55,8 @@
   flex-direction: column;
   border: 1px solid #d3d3d3;
   text-decoration: none;
+  background-color: rgb(240,240,240);
+  overflow-x: auto;
 }
 
 .note-card:hover {
