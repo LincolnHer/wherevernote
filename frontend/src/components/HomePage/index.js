@@ -21,7 +21,7 @@ function HomePage() {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     height: '100%',
-    width: '800px'
+    width: '100vw'
   };
 
 
