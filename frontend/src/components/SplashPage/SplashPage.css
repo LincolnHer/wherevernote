@@ -32,7 +32,7 @@ a:hover {
   flex-direction: column;
   align-items: center;
   overflow-y: auto;
-  height: 639px;
+  height: 670px;
 }
 
 .home-preview {
@@ -78,7 +78,7 @@ a:hover {
   border-top: 2px solid  black;
 }
 
-@media only screen and (min-height: 800px) {
+/* @media only screen and (min-height: 800px) {
   .splash-header {
     height: 800px;
   }
@@ -88,4 +88,4 @@ a:hover {
   .splash-header {
     height: 670px;
   }
-}
+} */
