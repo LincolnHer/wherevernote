@@ -19,7 +19,6 @@ function EditNote({ notebooks, selectedNoteId}) {
   const notes = useSelector((state) => state?.notes);
   const currNote = notes[selectedNoteId];
 //   const notesArr = Object.values(notes);
-//   console.log("EDIT NOTE COMP", currNote);
 
   const [title, setTitle] = useState(currNote?.title);
   const [content, setContent] = useState(currNote?.content);
@@ -49,7 +48,6 @@ function EditNote({ notebooks, selectedNoteId}) {
 
     const note = await dispatch(editNote(formValues, currNote?.id));
     history.push(`/notebooks/${note?.payload?.notebookId}`);
-    // console.log("NOTE.............", note)
     setNotebook(notebookId);
     setTitle(note?.payload?.title);
     setContent(note?.payload?.content);

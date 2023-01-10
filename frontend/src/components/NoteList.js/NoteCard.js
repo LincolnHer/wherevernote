@@ -15,7 +15,6 @@ function NoteCard({ note, setSelectedNoteId }) {
   const notes = useSelector((state) => state.notes);
   const createdAt = new Date(note?.createdAt);
   const singleNote = notes[noteId];
-  // console.log(singleNote)
   const convertedDate = createdAt.toDateString();
 
   // const {

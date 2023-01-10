@@ -16,7 +16,6 @@ function Notebook() {
   const dispatch = useDispatch();
   const { notebookId } = useParams();
   const [selectedNoteId, setSelectedNoteId] = useState(localStorage.getItem("note"))
-  // console.log("NOTEBOOK COMPONENT", selectedNoteId)
   const sessionUser = useSelector((state) => state.session.user);
   const notebooksObj = useSelector((state) => state?.notebooks);
   const notesObj = useSelector((state) => state?.notes);

@@ -1,14 +1,20 @@
 'use strict';
 
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
+    options.tableName = 'Notes';
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.
 
       Example:
       */
-    return queryInterface.bulkInsert('Notes', [
+    return queryInterface.bulkInsert(options, [
       {
         userId: 1,
         notebookId: 1,
@@ -149,12 +155,13 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
+    options.tableName = 'Notes';
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
 
       Example:
       */
-   return queryInterface.bulkDelete('Notes', null, {});
+   return queryInterface.bulkDelete(options, null, {});
   }
 };
