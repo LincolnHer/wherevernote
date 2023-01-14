@@ -21,7 +21,7 @@ wherevernote is an [evernote](https://evernote.com/) clone where users will be a
 
 ## Live Link
 
-   [wherevernote](https://wherevernote.herokuapp.com/)
+   [wherevernote](https://wherevernote.onrender.com/)
 
 ---
 
