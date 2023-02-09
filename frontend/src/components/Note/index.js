@@ -38,6 +38,8 @@ function Note({ notebooks }) {
 
   const submit = async (e) => {
     e.preventDefault();
+    const trimmedContent = content.trim();
+    setContent(trimmedContent.replace(/<p><\/p>/g, ''));
 
     const formValues = {
       userId: sessionUser.id,

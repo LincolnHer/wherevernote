@@ -1,5 +1,5 @@
 .note-list {
-  height: 81%;
+  height: 77.5%;
   width: 380px;
   max-width: 670px;
   min-width: 196px;
@@ -52,11 +52,11 @@
   padding: 10px 25px;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   border: 1px solid #d3d3d3;
   text-decoration: none;
   background-color: rgb(240,240,240);
-  overflow-x: auto;
+  /* overflow-x: auto; */
 }
 
 .note-card:hover {
