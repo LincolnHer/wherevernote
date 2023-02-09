@@ -65,18 +65,17 @@ a:hover {
   justify-content: center;
   align-items: center;
   width: 132px;
-  height: 72px;
+  height: 48px;
 }
 
 .splash-links.footer {
-  /* border-top: 1px  solid #F5F5F5; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 13px;
-  /* background-color: gray; */
   border-top: 2px solid  black;
 }
+
 
 /* @media only screen and (min-height: 800px) {
   .splash-header {
